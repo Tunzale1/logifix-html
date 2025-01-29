@@ -6,13 +6,14 @@
 <meta charset="utf-8">
 <title>Logifix | Logistic & Transport HTML Template | Services Page</title>
 <!-- Stylesheets -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
+{% load static %}
 
-<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-<link rel="icon" href="images/favicon.png" type="image/x-icon">
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/style.css' %}" rel="stylesheet">
 
-<script src="js/page-services.js"></script>
+<link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
+<link rel="icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
+
 
 <!-- Responsive -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,177 +27,11 @@
     <!-- Preloader -->
     <div class="preloader"><span class="loader"></span></div>
     
-    <!-- Main Header-->
-	<header class="main-header header-style-five">
-		<!-- Header Top -->
-		<div class="header-top">
-			<div class="inner-container">
-		
-				<div class="top-left">
-					<!-- Info List -->
-					<ul class="list-style-one">
-						<li><i class="fa fa-map-marker-alt"></i> 1901 Thornridge Cir. Shiloh, Hawaii 81063</li>
-						<li><i class="far fa-clock"></i> Mon - Fri: 09.00am - 10.00 pm</li>
-						<li><i class="fa fa-envelope"></i> <a href="https://html.kodesolution.com/cdn-cgi/l/email-protection#462f282029192933342b272f2a06233e272b362a236825292b"><span class="__cf_email__" data-cfemail="670e090108380812150a060e0b27021f060a170b024904080a">Mail</span></a></li>
-					</ul>
-				</div>
-		
-				<div class="top-right">
-					<ul class="social-icon-one">
-						<li><a href="#"><span class="fa fa-x"></span></a></li>
-						<li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
-						<li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
-						<li><a href="#"><span class="fab fa-instagram"></span></a></li>
-					</ul>
-					<ul class="useful-links">
-						<li><a href="#">Privacy & Policy</a></li>
-						<li><a href="#">FAQ’S</a></li>
-						<li><a href="#">Testimonials</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<!-- Header Top -->
-		  
-		<div class="header-lower">
-			<!-- Main box -->
-			<div class="main-box">
-				<div class="logo-box">
-					<div class="logo"><a href="index.html"><img src="images/logo.png" alt="" title="Logifix"></a></div>
-				</div>
+    {% include 'includes/header.html' %}
 
-				<!--Nav Box-->
-				<div class="nav-outer">    
-					<nav class="nav main-menu">
-						<ul class="navigation">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="page-about.html">About</a></li>
-							<li><a href="page-services.html">Services</a></li>
-							<li><a href="page-contact.html">Contact</a></li>
-						</ul>
-					</nav>
-					<!-- Main Menu End-->
-				</div>
-
-				<div class="outer-box">                    
-					<a href="tel:+92(8800)9806" class="info-btn">
-						<i class="icon fa fa-headphones"></i>
-						<small>Call Us Now</small>
-						+36 55 540 069
-					</a>
-
-					<span class="divider"></span>
-					
-					<!-- Header Search -->
-					<button class="ui-btn mx-0 search-btn">
-						<i class="icon lnr lnr-icon-search"></i>
-					</button>
-					
-					
-					<!-- Mobile Nav toggler -->
-					<div class="mobile-nav-toggler"><span class="icon lnr-icon-bars"></span></div>
-				</div>
-			</div>
-		</div>
-
-		<!-- Mobile Menu  -->
-		<div class="mobile-menu">
-			<div class="menu-backdrop"></div>
-		
-			<!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
-			<nav class="menu-box">
-				<div class="upper-box">
-					<div class="nav-logo"><a href="index.html"><img src="images/logo-2.png" alt=""></a></div>
-					<div class="close-btn"><i class="icon fa fa-times"></i></div>
-				</div>
-		
-				<ul class="navigation clearfix">
-					<!--Keep This Empty / Menu will come through Javascript-->
-				</ul>
-				<ul class="contact-list-one">
-					<li>
-						<!-- Contact Info Box -->
-						<div class="contact-info-box">
-							<i class="icon lnr-icon-phone-handset"></i>
-							<span class="title">Call Now</span>
-							<a href="tel:+92880098670">+92 (8800) - 98670</a>
-						</div>
-					</li>
-					<li>
-						<!-- Contact Info Box -->
-						<div class="contact-info-box">
-							<span class="icon lnr-icon-envelope1"></span>
-							<span class="title">Send Email</span>
-							<a href="https://html.kodesolution.com/cdn-cgi/l/email-protection#b1d9d4ddc1f1d2dedcc1d0dfc89fd2dedc"><span class="__cf_email__" data-cfemail="7a121f160a3a1915170a1b140354191517">[email&#160;protected]</span></a>
-						</div>
-					</li>
-					<li>
-						<!-- Contact Info Box -->
-						<div class="contact-info-box">
-							<span class="icon lnr-icon-clock"></span>
-							<span class="title">Send Email</span>
-							Mon - Sat 8:00 - 6:30, Sunday - CLOSED
-						</div>
-					</li>
-				</ul>
-		
-		
-				<ul class="social-links">
-					<li><a href="#"><i class="fa fa-x"></i></a></li>
-					<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-					<li><a href="#"><i class="fab fa-pinterest"></i></a></li>
-					<li><a href="#"><i class="fab fa-instagram"></i></a></li>
-				</ul>
-			</nav>
-		</div><!-- End Mobile Menu -->
-
-		<!-- Header Search -->
-		<div class="search-popup">
-			<span class="search-back-drop"></span>
-			<button class="close-search"><span class="fa fa-times"></span></button>
-		
-			<div class="search-inner">
-				<form method="post" action="">
-					<div class="form-group">
-						<input type="search" name="search-field" value="" placeholder="Search..." required="">
-						<button type="submit"><i class="fa fa-search"></i></button>
-					</div>
-				</form>
-			</div>
-		</div>
-		<!-- End Header Search -->
-
-		<!-- Sticky Header  -->
-		<div class="sticky-header">
-			<div class="auto-container">
-				<div class="inner-container">
-					<!--Logo-->
-					<div class="logo">
-						<a href="index.html"><img src="images/logo-2.png" alt=""></a>
-					</div>
-		
-					<!--Right Col-->
-					<div class="nav-outer">
-						<!-- Main Menu -->
-						<nav class="main-menu">
-							<div class="navbar-collapse show collapse clearfix">
-								<ul class="navigation clearfix">
-									<!--Keep This Empty / Menu will come through Javascript-->
-								</ul>
-							</div>
-						</nav><!-- Main Menu End-->
-		
-						<!--Mobile Navigation Toggler-->
-						<div class="mobile-nav-toggler"><span class="icon lnr-icon-bars"></span></div>
-					</div>
-				</div>
-			</div>
-		</div><!-- End Sticky Menu -->
-	</header>
-    <!--End Main Header -->
 
 	<!-- Start main-content -->
-	<section class="page-title" style="background-image: url(images/background/page-title.jpg);">
+	<section class="page-title" style="background-image: url({% static 'images/background/page-title.jpg' %});">
 		<div class="auto-container">
 			<div class="title-outer text-center">
 				<h1 class="title">Services</h1>
@@ -217,8 +52,8 @@
 					<div class="inner-box">
 						<div class="image-box service-block-two-images">
 							<figure class="image">
-								<img src="images/resource/service2-1.jpg" alt="">
-								<img src="images/resource/service2-1.jpg" alt="">
+								<img src="{% static 'images/resource/service2-1.jpg' %}" alt="">
+								<img src="{% static 'images/resource/service2-1.jpg' %}" alt="">
 							</figure>
 							<div class="icon"><i class="flaticon-team"></i></div>
 						</div>
@@ -235,8 +70,8 @@
 					<div class="inner-box">
 						<div class="image-box service-block-two-images">
 							<figure class="image">
-								<img src="images/resource/service2-2.jpg" alt="">
-								<img src="images/resource/service2-2.jpg" alt="">
+								<img src="{% static 'images/resource/service2-2.jpg' %}" alt="">
+								<img src="{% static 'images/resource/service2-2.jpg' %}" alt="">
 							</figure>
 							<div class="icon"><i class="flaticon-delivery-insurance-3"></i></div>
 						</div>
@@ -253,8 +88,8 @@
 					<div class="inner-box">
 						<div class="image-box service-block-two-images">
 							<figure class="image">
-								<img src="images/resource/service2-3.jpg" alt="">
-								<img src="images/resource/service2-3.jpg" alt="">
+								<img src="{% static 'images/resource/service2-3.jpg' %}" alt="">
+								<img src="{% static 'images/resource/service2-3.jpg' %}" alt="">
 							</figure>
 							<div class="icon"><i class="flaticon-logistics-2"></i></div>
 						</div>
@@ -271,8 +106,8 @@
 					<div class="inner-box">
 						<div class="image-box service-block-two-images">
 							<figure class="image">
-								<img src="images/resource/service2-3.jpg" alt="">
-								<img src="images/resource/service2-3.jpg" alt="">
+								<img src="{% static 'images/resource/service2-3.jpg' %}" alt="">
+								<img src="{% static 'images/resource/service2-3.jpg' %}" alt="">
 							</figure>
 							<div class="icon"><i class="flaticon-logistics-2"></i></div>
 						</div>
@@ -289,8 +124,8 @@
 					<div class="inner-box">
 						<div class="image-box service-block-two-images">
 							<figure class="image">
-								<img src="images/resource/service2-1.jpg" alt="">
-								<img src="images/resource/service2-1.jpg" alt="">
+								<img src="{% static 'images/resource/service2-1.jpg' %}" alt="">
+								<img src="{% static 'images/resource/service2-1.jpg' %}" alt="">
 							</figure>
 							<div class="icon"><i class="flaticon-team"></i></div>
 						</div>
@@ -307,8 +142,8 @@
 					<div class="inner-box">
 						<div class="image-box service-block-two-images">
 							<figure class="image">
-								<img src="images/resource/service2-2.jpg" alt="">
-								<img src="images/resource/service2-2.jpg" alt="">
+								<img src="{% static 'images/resource/service2-2.jpg' %}" alt="">
+								<img src="{% static 'images/resource/service2-2.jpg' %}" alt="">
 							</figure>
 							<div class="icon"><i class="flaticon-delivery-insurance-3"></i></div>
 						</div>
@@ -326,123 +161,7 @@
 	</section>
     <!-- End services-section -->
 
-    <!-- Main Footer -->
-	<footer class="main-footer home2-style">
-		<div class="bg bg-image" style="background-image: url(images/icons/footer-bg.png);"></div>
-		
-		<!-- Footer Uppper -->
-		<div class="footer-upper">
-			<div class="auto-container">
-				<div class="row">
-					<!-- logo box -->
-					<div class="logo-box col-md-4">
-						<div class="inner mb-xs-50">
-							<div class="logo"><a href="#"> <img src="images/logo.png" alt=""></a></div>
-						</div>
-					</div>
-					<!-- Contact info Block -->
-					<div class="contact-info-block col-md-4 col-sm-6">
-						<div class="inner">
-							<i class="icon lnr lnr-icon-phone-handset"></i>
-							<span class="sub-title">Call Us On</span>
-							<div class="text"><a href="tel:+91458654528">+91 458 654 528</a></div>
-						</div>
-					</div>
-					<!-- Contact info Block -->
-					<div class="contact-info-block col-md-4 col-sm-6">
-						<div class="inner">
-							<i class="icon lnr lnr-icon-envelope1"></i>
-							<span class="sub-title">Mail to Us</span>
-							<div class="text"><a href="https://html.kodesolution.com/cdn-cgi/l/email-protection#074b68606e616e7f47747277776875732964686a"><span class="__cf_email__" data-cfemail="fdb1929a949b9485bd8e888d8d928f89d39e9290">[email&#160;protected]</span></a></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- Widgets Section -->
-		<div class="widgets-section">
-			<div class="auto-container">
-				<div class="row">
-					<!-- Footer COlumn -->
-					<div class="footer-column col-lg-4 col-md-6">
-						<div class="footer-widget about-widget">
-							<h6 class="widget-title">About Us</h6>
-							<div class="widget-content">
-								<div class="text">To get started with us, please go over <br> all of our internet plans and other <br>plans to let our operators.</div>
-								<ul class="social-icon-two mt-4">
-									<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-									<li><a href="#"><i class="fa fa-x"></i></a></li>
-									<li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					
-					<!-- Footer COlumn -->
-					<div class="footer-column col-xl-4 col-lg-4 col-md-6 mb-0">
-						<div class="row">
-							<div class="col-lg-6 col-md-6">
-								<div class="widget links-widget">
-									<h6 class="widget-title">Useful Links</h6>
-									<div class="widget-content">
-										<ul class="user-links">
-											<li><a href="#">About Us</a></li>
-											<li><a href="#">Our Services</a></li>
-											<li><a href="#">Our Clients</a></li>
-											<li><a href="#">Testimonial</a></li>
-											<li><a href="#">News & Media</a></li>
-										</ul>                                
-									</div>
-								</div>
-							</div>
-
-							<div class="col-lg-6 col-md-6">
-								<div class="widget links-widget">
-									<h6 class="widget-title">Services</h6>
-									<div class="widget-content">
-										<ul class="user-links">
-											<li><a href="#">Air Freight</a></li>
-											<li><a href="#">Land Freight</a></li>
-											<li><a href="#">Ocean Freight</a></li>
-											<li><a href="#">Rail Freight</a></li>
-											<li><a href="#">Warehousing</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- Footer COlumn -->
-					<div class="footer-column col-lg-4 col-md-8">
-						<div class="widget newsletter-widget">
-							<h6 class="widget-title">Newsletter</h6>
-							<div class="widget-content">
-								<div class="text">Sign up for alerts, our latest blogs, thoughts, and insights.</div>
-								<div class="subscribe-form">
-									<form method="post" action="#">
-										<div class="form-group">
-											<input type="email" name="email" class="email" value="" placeholder="Your Email" required="">
-											<button type="button" class="theme-btn btn-style-one"><i class="far fa-paper-plane"></i></button>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!--  Footer Bottom -->
-		<div class="footer-bottom">
-			<div class="auto-container">
-				<div class="copyright-text">© Copyrights reserved by <a href="index.html"> kodesolution</a></div>
-			</div>
-		</div>
-	</footer>
-    <!--End Main Footer -->
+    {% include 'includes/footer.html' %}
 
 </div>
 <!-- End Page Wrapper -->
@@ -452,15 +171,16 @@
 <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
 
 
-<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="js/jquery.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.fancybox.js"></script>
-<script src="js/jquery-ui.js"></script>
-<script src="js/wow.js"></script>
-<script src="js/appear.js"></script>
-<script src="js/select2.min.js"></script>
-<script src="js/script.js"></script>
+<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.fancybox.js' %}"></script>
+<script src="{% static 'js/jquery-ui.js' %}"></script>
+<script src="{% static 'js/wow.js' %}"></script>
+<script src="{% static 'js/appear.js' %}"></script>
+<script src="{% static 'js/select2.min.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
 </body>
 
 <!-- Mirrored from html.kodesolution.com/2024/logifix-html/page-services.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jan 2025 07:07:45 GMT -->

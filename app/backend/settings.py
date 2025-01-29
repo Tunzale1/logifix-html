@@ -85,5 +85,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]  # Tells Django where to find static files in development
 STATIC_ROOT = BASE_DIR / "staticfiles"  # Directory for collectstatic (useful for production)
 
+APPEND_SLASH = False
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

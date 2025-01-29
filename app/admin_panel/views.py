@@ -16,4 +16,7 @@ def services_page(request):
 
 def home(request):
     return render(request, "index.html")  # Change "index.html" if your main page is different
+
+def about_page(request):
+    return render(request, "page-about.html", {})
  
