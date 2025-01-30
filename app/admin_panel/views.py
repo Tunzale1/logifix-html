@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from rest_framework.response import Response
+from django.http import JsonResponse
 from rest_framework.decorators import api_view
+from django.views.decorators.csrf import csrf_exempt
 from .models import Service
 from .serializers import ServiceSerializer
 
@@ -19,4 +21,24 @@ def home(request):
 
 def about_page(request):
     return render(request, "page-about.html", {})
+
+
+def contact_page(request):
+    if request.method == 'POST':
+        # Process the form data
+        name = request.POST.get('form_name')
+        email = request.POST.get('form_email')
+        subject = request.POST.get('form_subject')
+        phone = request.POST.get('form_phone')
+        message = request.POST.get('form_message')
+        
+        
+        return JsonResponse({
+            'status': 'true',
+            'message': 'Thank you for your message. We will contact you soon!'
+        })
+    
+    return render(request, 'page-contact.html')
+
+
  

@@ -16,12 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from admin_panel.views import home, services_page, about_page
+from admin_panel.views import home, services_page, about_page, contact_page
 
 urlpatterns = [
     path("", home, name="home"),  # This serves your main page
     path("services/", services_page, name="services_page"),  # This serves the services page
     path("admin/", admin.site.urls),
     path("about/", about_page, name="about_page"),
+    path("contact/", contact_page, name="contact_page"),
 ]
 
