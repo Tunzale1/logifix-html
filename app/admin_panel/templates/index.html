@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from html.kodesolution.com/2024/logifix-html/index-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jan 2025 07:07:04 GMT -->
 <head>
 <meta charset="utf-8">
 <title>Logifix | Logistic & Transport HTML Template | Home Page 02</title>
@@ -51,7 +50,7 @@
 				<h1 class="title wow fadeInLeft" data-wow-delay="900ms">Transport <br />Solution 24/7</h1>
 				<div class="text wow fadeInLeft" data-wow-delay="1200ms">We strongly support best practice sharing across our <br />operations around the world and across various</div>
 				<div class="btn-box wow fadeInLeft" data-wow-delay="1500ms">
-					<a href="page-about.html" class="theme-btn btn-style-two"><span class="btn-title">Request A Quote <i class="fa fa-arrow-right"></i></span></a>
+					<a href="{% url 'about_page' %}" class="theme-btn btn-style-two"><span class="btn-title">Request A Quote <i class="fa fa-arrow-right"></i></span></a>
 				</div>
 			</div>
 		</div>
@@ -157,7 +156,7 @@
 							<li><i class="far fa-check-circle"></i> Velit esse cillum dolore eu fugiat nulla pariatur</li>
 						</ul>
 						<div class="btn-box">
-							<a href="page-about.html" class="theme-btn btn-style-two"><span class="btn-title">Get Started Now <i class="fa fa-long-arrow-right"></i></span></a>
+							<a href="{% url 'about_page' %}" class="theme-btn btn-style-two"><span class="btn-title">Get Started Now <i class="fa fa-long-arrow-right"></i></span></a>
 						</div>
 					</div>
 				</div>
@@ -252,7 +251,7 @@
 								<h2>Logistics & Cargo <br class="d-none d-xl-block" />For Business</h2>
 							</div>
 							<div class="info-box">
-								<a href="page-contact.html" class="theme-btn btn-style-two dark-bg hover-light btn-lg"><span class="btn-title">Get Started Now <i class="fa fa-arrow-right"></i></span></a>
+								<a href="{% url 'contact_page' %}" class="theme-btn btn-style-two dark-bg hover-light btn-lg"><span class="btn-title">Get Started Now <i class="fa fa-arrow-right"></i></span></a>
 							</div>
 						</div>
 					</div>
@@ -414,7 +413,7 @@
 							<li><i class="fa fa-plane"></i> Top quality services with reasonable price</li>
 							<li><i class="fa fa-plane"></i> Reliable & experienced staffs</li>
 						</ul>
-						<a href="page-services.html" class="theme-btn btn-style-two theme2-bg hover-light"><span class="btn-title">Explore More <i class="fa fa-arrow-right"></i></span></a>
+						<a href="{% url 'services_page' %}" class="theme-btn btn-style-two theme2-bg hover-light"><span class="btn-title">Explore More <i class="fa fa-arrow-right"></i></span></a>
 					</div>
 				</div>
 

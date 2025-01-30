@@ -33,7 +33,7 @@
 			<div class="title-outer text-center">
 				<h1 class="title">About Us</h1>
 				<ul class="page-breadcrumb">
-					<li><a href="index.html">Home</a></li>
+					<li><a href="{% url 'home' %}">Home</a></li>
 					<li>About Us</li>
 				</ul>
 			</div>
@@ -67,7 +67,7 @@
 							</ul>
 						</div>
 						<div class="btn-box">
-							<a href="page-project-details.html" class="theme-btn btn-style-two"><span class="btn-title">Explore More <i class="fa fa-arrow-right"></i></span></a>
+							<a href="{% url 'services_page' %}" class="theme-btn btn-style-two"><span class="btn-title">Explore More <i class="fa fa-arrow-right"></i></span></a>
 						</div>
 					</div>
 				</div>
@@ -187,7 +187,7 @@
 						<h4 class="title">Logifix Quick Transport</h4>
 						<div class="price">Starting From <strong class="color6">$20</strong> / <small>kg</small></div>
 						<div class="btn-box animate-2">
-							<a href="page-pricing.html" class="theme-btn btn-style-two"><span class="btn-title">Get Started Now <i class="fa fa-arrow-right"></i></span></a>
+							<a href="{% url 'contact_page' %}" class="theme-btn btn-style-two"><span class="btn-title">Get Started Now <i class="fa fa-arrow-right"></i></span></a>
 						</div>
 					</div>
 				</div>
