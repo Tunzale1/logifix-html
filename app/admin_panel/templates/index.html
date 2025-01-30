@@ -124,7 +124,7 @@
 				</div>
 			</div>
 
-			<div class="bottom-text text-center">2.6k Companies & Individuals Trusted Us. for our service <a href="page-service-details.html">All Services</a></div>
+			<div class="bottom-text text-center">2.6k Companies & Individuals Trusted Us. for our service <a href="{% url 'services_page' %}">All Services</a></div>
 		</div>
 	</section>
 	<!--End Services Two Section -->
@@ -230,6 +230,9 @@
 						<figure class="image"><img src="{% static 'images/resource/image-1.jpg'%}" alt=""></figure>
 						<h4 class="title">Logifix Quick Transport</h4>
 						<div class="price">Starting From <span class="color6">$99.9</span> / <small>kg</small></div>
+						<div class="btn-box animate-2">
+							<a href="{% url 'contact_page' %}" class="theme-btn btn-style-two"><span class="btn-title">Get Started Now <i class="fa fa-arrow-right"></i></span></a>
+						</div>
 					</div>
 				</div>
 			</div>

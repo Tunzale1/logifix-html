@@ -4,17 +4,11 @@ from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from django.views.decorators.csrf import csrf_exempt
 from .models import Service
-from .serializers import ServiceSerializer
 
-@api_view(["GET"])
-def get_services(request):
-    services = Service.objects.all()  # Fetch all services
-    serializer = ServiceSerializer(services, many=True)  # Serialize data
-    return Response(serializer.data)  # Return JSON response
-
-# Create your views here.
 def services_page(request):
-    return render(request, "page-services.html")
+    services = Service.objects.all()
+    print(services)
+    return render(request, 'page-services.html', {'services': services})
 
 def home(request):
     return render(request, "index.html")  # Change "index.html" if your main page is different

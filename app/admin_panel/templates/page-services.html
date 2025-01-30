@@ -1,20 +1,16 @@
+<!-- page-services.html -->
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from html.kodesolution.com/2024/logifix-html/page-services.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jan 2025 07:07:45 GMT -->
 <head>
 <meta charset="utf-8">
 <title>Logifix | Logistic & Transport HTML Template | Services Page</title>
 <!-- Stylesheets -->
 {% load static %}
-
 <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 <link href="{% static 'css/style.css' %}" rel="stylesheet">
-
 <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
 <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
-
-
 <!-- Responsive -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -28,7 +24,6 @@
     <div class="preloader"><span class="loader"></span></div>
     
     {% include 'includes/header.html' %}
-
 
 	<!-- Start main-content -->
 	<section class="page-title" style="background-image: url({% static 'images/background/page-title.jpg' %});">
@@ -47,115 +42,27 @@
     <!-- Services Section -->
 	<section class="services-section pb-90">
 		<div class="auto-container">
-			<div class="row" id="services-container">
-				<div class="service-block-two col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
+			<div class="row">
+				{% for service in services %}
+				<div class="service-block-two col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="{{ forloop.counter|add:"0" }}00ms">
 					<div class="inner-box">
 						<div class="image-box service-block-two-images">
 							<figure class="image">
-								<img src="{% static 'images/resource/service2-1.jpg' %}" alt="">
-								<img src="{% static 'images/resource/service2-1.jpg' %}" alt="">
+								<img style="width: 100%" src="{{ service.image.url }}" alt="{{ service.title }}">
+								<img style="width: 100%" src="{{ service.image.url }}" alt="{{ service.title }}">
 							</figure>
 							<div class="icon"><i class="flaticon-team"></i></div>
 						</div>
 						<div class="content-box">
-							<h4 class="title"><a href="page-service-details.html">Safety and Reliability</a></h4>
+							<h4 class="title"><a href="page-service-details.html">{{ service.title }}</a></h4>
 							<ul class="services-list">
-								<li><i class="fa fa-sparkles"></i> Worldwide service</li>
-								<li><i class="fa fa-sparkles"></i> 24/7 Support</li>
+								<li><i class="fa fa-sparkles"></i> {{ service.description }}</li>
+								<li><i class="fa fa-sparkles"></i> {{ service.description }}</li>
 							</ul>
 						</div>
 					</div>
 				</div>
-				<div class="service-block-two col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="200ms">
-					<div class="inner-box">
-						<div class="image-box service-block-two-images">
-							<figure class="image">
-								<img src="{% static 'images/resource/service2-2.jpg' %}" alt="">
-								<img src="{% static 'images/resource/service2-2.jpg' %}" alt="">
-							</figure>
-							<div class="icon"><i class="flaticon-delivery-insurance-3"></i></div>
-						</div>
-						<div class="content-box">
-							<h4 class="title"><a href="page-service-details.html">Reduced Transit Time</a></h4>
-							<ul class="services-list">
-								<li><i class="fa fa-sparkles"></i> Worldwide service</li>
-								<li><i class="fa fa-sparkles"></i> 24/7 Support</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="service-block-two col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="300ms">
-					<div class="inner-box">
-						<div class="image-box service-block-two-images">
-							<figure class="image">
-								<img src="{% static 'images/resource/service2-3.jpg' %}" alt="">
-								<img src="{% static 'images/resource/service2-3.jpg' %}" alt="">
-							</figure>
-							<div class="icon"><i class="flaticon-logistics-2"></i></div>
-						</div>
-						<div class="content-box">
-							<h4 class="title"><a href="page-service-details.html">Shipping Worldwide</a></h4>
-							<ul class="services-list">
-								<li><i class="fa fa-sparkles"></i> Worldwide service</li>
-								<li><i class="fa fa-sparkles"></i> 24/7 Support</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="service-block-two col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="400ms">
-					<div class="inner-box">
-						<div class="image-box service-block-two-images">
-							<figure class="image">
-								<img src="{% static 'images/resource/service2-3.jpg' %}" alt="">
-								<img src="{% static 'images/resource/service2-3.jpg' %}" alt="">
-							</figure>
-							<div class="icon"><i class="flaticon-logistics-2"></i></div>
-						</div>
-						<div class="content-box">
-							<h4 class="title"><a href="page-service-details.html">Shipping Worldwide</a></h4>
-							<ul class="services-list">
-								<li><i class="fa fa-sparkles"></i> Worldwide service</li>
-								<li><i class="fa fa-sparkles"></i> 24/7 Support</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="service-block-two col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="500ms">
-					<div class="inner-box">
-						<div class="image-box service-block-two-images">
-							<figure class="image">
-								<img src="{% static 'images/resource/service2-1.jpg' %}" alt="">
-								<img src="{% static 'images/resource/service2-1.jpg' %}" alt="">
-							</figure>
-							<div class="icon"><i class="flaticon-team"></i></div>
-						</div>
-						<div class="content-box">
-							<h4 class="title"><a href="page-service-details.html">Safety and Reliability</a></h4>
-							<ul class="services-list">
-								<li><i class="fa fa-sparkles"></i> Worldwide service</li>
-								<li><i class="fa fa-sparkles"></i> 24/7 Support</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="service-block-two col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="600ms">
-					<div class="inner-box">
-						<div class="image-box service-block-two-images">
-							<figure class="image">
-								<img src="{% static 'images/resource/service2-2.jpg' %}" alt="">
-								<img src="{% static 'images/resource/service2-2.jpg' %}" alt="">
-							</figure>
-							<div class="icon"><i class="flaticon-delivery-insurance-3"></i></div>
-						</div>
-						<div class="content-box">
-							<h4 class="title"><a href="page-service-details.html">Reduced Transit Time</a></h4>
-							<ul class="services-list">
-								<li><i class="fa fa-sparkles"></i> Worldwide service</li>
-								<li><i class="fa fa-sparkles"></i> 24/7 Support</li>
-							</ul>
-						</div>
-					</div>
-				</div>
+				{% endfor %}
 			</div>
 		</div>
 	</section>
@@ -166,10 +73,8 @@
 </div>
 <!-- End Page Wrapper -->
 
-
 <!-- Scroll To Top -->
 <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
-
 
 <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script src="{% static 'js/jquery.js' %}"></script>
@@ -183,5 +88,4 @@
 <script src="{% static 'js/script.js' %}"></script>
 </body>
 
-<!-- Mirrored from html.kodesolution.com/2024/logifix-html/page-services.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jan 2025 07:07:45 GMT -->
 </html>
