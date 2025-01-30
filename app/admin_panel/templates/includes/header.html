@@ -35,7 +35,7 @@
         <!-- Main box -->
         <div class="main-box">
             <div class="logo-box">
-                <div class="logo"><a href="index.html"><img src="{% static 'images/logo.png'%}" alt="" title="Logifix"></a></div>
+                <div class="logo"><a href="{% url 'home' %}"><img src="{% static 'images/logo.png'%}" alt="" title="Logifix"></a></div>
             </div>
 
             <!--Nav Box-->
@@ -78,7 +78,7 @@
         <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
         <nav class="menu-box">
             <div class="upper-box">
-                <div class="nav-logo"><a href="index.html"><img src="{% static 'images/logo.png'%}" alt=""></a></div>
+                <div class="nav-logo"><a href="{% url 'home' %}" ><img src="{% static 'images/logo.png'%}" alt=""></a></div>
                 <div class="close-btn"><i class="icon fa fa-times"></i></div>
             </div>
     
@@ -144,7 +144,7 @@
             <div class="inner-container">
                 <!--Logo-->
                 <div class="logo">
-                    <a href="index.html"><img src="{% static 'images/logo-2.png' %}" alt=""></a>
+                    <a href="{% url 'home' %}"><img src="{% static 'images/logo-2.png' %}" alt=""></a>
                 </div>
     
                 <!--Right Col-->
