@@ -1,9 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from rest_framework.response import Response
 from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from django.views.decorators.csrf import csrf_exempt
 from .models import Service
+
+def service_detail(request, service_slug):
+    service = get_object_or_404(Service, slug=service_slug)
+    services = Service.objects.all() 
+    return render(request, 'page-service-details.html', {'service': service, 'services': services})
 
 def services_page(request):
     services = Service.objects.all()

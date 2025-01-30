@@ -54,7 +54,13 @@
 							<div class="icon"><i class="flaticon-team"></i></div>
 						</div>
 						<div class="content-box">
-							<h4 class="title"><a href="page-service-details.html">{{ service.title }}</a></h4>
+							<h4 class="title">
+								{% if service.slug %}
+									<a href="{% url 'service_detail' service.slug %}">{{ service.title }}</a>
+								{% else %}
+									{{ service.title }}  <!-- Display title without link if no slug -->
+								{% endif %}
+							</h4>
 							<ul class="services-list">
 								<li><i class="fa fa-sparkles"></i> {{ service.description }}</li>
 								<li><i class="fa fa-sparkles"></i> {{ service.description }}</li>
