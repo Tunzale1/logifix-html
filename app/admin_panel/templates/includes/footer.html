@@ -1,33 +1,44 @@
+<!-- footer.html -->
 {% load static %}
 
 <!-- Main Footer -->
 <footer class="main-footer home2-style">
     <div class="bg bg-image" style="background-image: url({% static 'images/icons/footer-bg.png' %});"></div>
     
-    <!-- Footer Uppper -->
+    <!-- Footer Upper -->
     <div class="footer-upper">
         <div class="auto-container">
             <div class="row">
-                <!-- logo box -->
+                <!-- Logo Box -->
                 <div class="logo-box col-md-4">
                     <div class="inner mb-xs-50">
-                        <div class="logo"><a href="#"> <img src="{% static 'images/logo.png' %}" alt=""></a></div>
+                        <div class="logo">
+                            <a href="{{ footer_logo.link }}">
+                                <img src="{{ footer_logo.logo.url }}" alt="">
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <!-- Contact info Block -->
+
+                <!-- Contact Info Block -->
                 <div class="contact-info-block col-md-4 col-sm-6">
                     <div class="inner">
-                        <i class="icon lnr lnr-icon-phone-handset"></i>
-                        <span class="sub-title">Call Us On</span>
-                        <div class="text"><a href="tel:+91458654528">+91 458 654 528</a></div>
+                        <i class="icon {{ footer_contact_info.phone_icon }}"></i>
+                        <span class="sub-title">{{ footer_contact_info.phone_title }}</span>
+                        <div class="text">
+                            <a href="tel:{{ footer_contact_info.phone_number }}">{{ footer_contact_info.phone_number }}</a>
+                        </div>
                     </div>
                 </div>
-                <!-- Contact info Block -->
+
+                <!-- Contact Info Block -->
                 <div class="contact-info-block col-md-4 col-sm-6">
                     <div class="inner">
-                        <i class="icon lnr lnr-icon-envelope1"></i>
-                        <span class="sub-title">Mail to Us</span>
-                        <div class="text"><a href="https://html.kodesolution.com/cdn-cgi/l/email-protection#2d61424a444b44556d5e585d5d425f59034e4240"><span class="__cf_email__" data-cfemail="0844676f616e6170487b7d7878677a7c266b6765">Mail</span></a></div>
+                        <i class="icon {{ footer_contact_info.email_icon }}"></i>
+                        <span class="sub-title">{{ footer_contact_info.email_title }}</span>
+                        <div class="text">
+                            <a href="mailto:{{ footer_contact_info.email_address }}">{{ footer_contact_info.email_address }}</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -38,34 +49,32 @@
     <div class="widgets-section">
         <div class="auto-container">
             <div class="row">
-                <!-- Footer COlumn -->
+                <!-- Footer Column -->
                 <div class="footer-column col-lg-4 col-md-6">
                     <div class="footer-widget about-widget">
-                        <h6 class="widget-title">About Us</h6>
+                        <h6 class="widget-title">{{ footer_about.title }}</h6>
                         <div class="widget-content">
-                            <div class="text">To get started with us, please go over <br /> all of our internet plans and other <br />plans to let our operators.</div>
+                            <div class="text">{{ footer_about.description }}</div>
                             <ul class="social-icon-two mt-4">
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fa fa-x"></i></a></li>
-                                <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                                <li><a href="{{ footer_about.facebook_link }}"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="{{ footer_about.twitter_link }}"><i class="fa fa-x"></i></a></li>
+                                <li><a href="{{ footer_about.linkedin_link }}"><i class="fab fa-linkedin"></i></a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Footer COlumn -->
+
+                <!-- Footer Column -->
                 <div class="footer-column col-xl-4 col-lg-4 col-md-6 mb-0">
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
                             <div class="widget links-widget">
-                                <h6 class="widget-title">Useful Links</h6>
+                                <h6 class="widget-title">{{ footer_useful_links.title }}</h6>
                                 <div class="widget-content">
                                     <ul class="user-links">
-                                        <li><a href="#">About Us</a></li>
-                                        <li><a href="#">Our Services</a></li>
-                                        <li><a href="#">Our Clients</a></li>
-                                        <li><a href="#">Testimonial</a></li>
-                                        <li><a href="#">News & Media</a></li>
+                                        {% for link in footer_useful_links.links %}
+                                            <li><a href="{{ link.url }}">{{ link.name }}</a></li>
+                                        {% endfor %}
                                     </ul>                                
                                 </div>
                             </div>
@@ -73,14 +82,12 @@
 
                         <div class="col-lg-6 col-md-6">
                             <div class="widget links-widget">
-                                <h6 class="widget-title">Services</h6>
+                                <h6 class="widget-title">{{ footer_services.title }}</h6>
                                 <div class="widget-content">
                                     <ul class="user-links">
-                                        <li><a href="#">Air Freight</a></li>
-                                        <li><a href="#">Land Freight</a></li>
-                                        <li><a href="#">Ocean Freight</a></li>
-                                        <li><a href="#">Rail Freight</a></li>
-                                        <li><a href="#">Warehousing</a></li>
+                                        {% for link in footer_services.links %}
+                                            <li><a href="{{ link.url }}">{{ link.name }}</a></li>
+                                        {% endfor %}
                                     </ul>
                                 </div>
                             </div>
@@ -88,16 +95,16 @@
                     </div>
                 </div>
 
-                <!-- Footer COlumn -->
+                <!-- Footer Column -->
                 <div class="footer-column col-lg-4 col-md-8">
                     <div class="widget newsletter-widget">
-                        <h6 class="widget-title">Newsletter</h6>
+                        <h6 class="widget-title">{{ footer_newsletter.title }}</h6>
                         <div class="widget-content">
-                            <div class="text">Sign up for alerts, our latest blogs, thoughts, and insights.</div>
+                            <div class="text">{{ footer_newsletter.description }}</div>
                             <div class="subscribe-form">
                                 <form method="post" action="#">
                                     <div class="form-group">
-                                        <input type="email" name="email" class="email" value="" placeholder="Your Email" required="">
+                                        <input type="email" name="email" class="email" value="" placeholder="{{ footer_newsletter.placeholder_text }}" required="">
                                         <button type="button" class="theme-btn btn-style-one"><i class="far fa-paper-plane"></i></button>
                                     </div>
                                 </form>
@@ -109,11 +116,11 @@
         </div>
     </div>
 
-    <!--  Footer Bottom -->
+    <!-- Footer Bottom -->
     <div class="footer-bottom">
         <div class="auto-container">
-            <div class="copyright-text">© Copyrights reserved by <a href="{% url 'home' %}"> oesolution</a></div>
+            <div class="copyright-text">© {{ footer_copyright.text }} <a href="{{ footer_copyright.link }}">oesolution</a></div>
         </div>
     </div>
 </footer>
-<!--End Main Footer -->
+<!-- End Main Footer -->

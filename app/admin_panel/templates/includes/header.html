@@ -5,26 +5,25 @@
     <!-- Header Top -->
     <div class="header-top">
         <div class="inner-container">
-    
             <div class="top-left">
                 <!-- Info List -->
                 <ul class="list-style-one">
-                    <li><i class="fa fa-map-marker-alt"></i> 1901 Horidge Cir. Shiloh, Hawaii 81063</li>
-                    <li><i class="far fa-clock"></i> Mon - Fri: 09.00am - 10.00 pm</li>
-                    <li><i class="fa fa-envelope"></i> <a href=""><span>Mail</span></a></li>
+                    <li><i class="fa fa-map-marker-alt"></i> {{ header_top_info.address }}</li>
+                    <li><i class="far fa-clock"></i> {{ header_top_info.working_hours }}</li>
+                    <li><i class="fa fa-envelope"></i> <a href="mailto:{{ header_top_info.email }}"><span>Mail</span></a></li>
                 </ul>
             </div>
     
             <div class="top-right">
                 <ul class="social-icon-one">
-                    <li><a href="#"><span class="fa fa-x"></span></a></li>
-                    <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
-                    <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
-                    <li><a href="#"><span class="fab fa-instagram"></span></a></li>
+                    <li><a href="{{ header_social_links.twitter_link }}"><span class="fa fa-x"></span></a></li>
+                    <li><a href="{{ header_social_links.facebook_link }}"><span class="fab fa-facebook-square"></span></a></li>
+                    <li><a href="{{ header_social_links.pinterest_link }}"><span class="fab fa-pinterest-p"></span></a></li>
+                    <li><a href="{{ header_social_links.instagram_link }}"><span class="fab fa-instagram"></span></a></li>
                 </ul>
                 <ul class="useful-links">
-                    <li><a href="#">Privacy & Policy</a></li>
-                    <li><a href="#">FAQ’S</a></li>
+                    <li><a href="{{ header_useful_links.privacy_policy_link }}">Privacy & Policy</a></li>
+                    <li><a href="{{ header_useful_links.faq_link }}">FAQ’S</a></li>
                 </ul>
             </div>
         </div>
@@ -35,7 +34,9 @@
         <!-- Main box -->
         <div class="main-box">
             <div class="logo-box">
-                <div class="logo"><a href="{% url 'home' %}"><img src="{% static 'images/logo.png'%}" alt="" title="Logifix"></a></div>
+                <a href="{% url 'home' %}">
+                    <img src="{{ header_logo.logo.url }}" alt="{{ header_logo.logo_alt_text }}" title="{{ header_logo.logo_alt_text }}">
+                </a>
             </div>
 
             <!--Nav Box-->
@@ -52,10 +53,10 @@
             </div>
 
             <div class="outer-box">                    
-                <a href="tel:+92(8800)9806" class="info-btn">
+                <a href="tel:{{ header_contact_info.phone_number }}" class="info-btn">
                     <i class="icon fa fa-headphones"></i>
                     <small>Call Us Now</small>
-                    +36 55 540 069
+                    {{ header_contact_info.phone_number }}
                 </a>
 
                 <span class="divider"></span>
@@ -78,7 +79,7 @@
         <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
         <nav class="menu-box">
             <div class="upper-box">
-                <div class="nav-logo"><a href="{% url 'home' %}" ><img src="{% static 'images/logo.png'%}" alt=""></a></div>
+                <div class="nav-logo"><a href="{% url 'home' %}" ><img src="{{ header_logo.logo.url }}" alt="{{ header_logo.logo_alt_text }}"></a></div>
                 <div class="close-btn"><i class="icon fa fa-times"></i></div>
             </div>
     
@@ -91,7 +92,7 @@
                     <div class="contact-info-box">
                         <i class="icon lnr-icon-phone-handset"></i>
                         <span class="title">Call Now</span>
-                        <a href="tel:+92880098670">+92 (8800) - 98670</a>
+                        <a href="tel:{{ header_contact_info.phone_number }}">{{ header_contact_info.phone_number }}</a>
                     </div>
                 </li>
                 <li>
@@ -99,25 +100,24 @@
                     <div class="contact-info-box">
                         <span class="icon lnr-icon-envelope1"></span>
                         <span class="title">Send Email</span>
-                        <a href="https://html.kodesolution.com/cdn-cgi/l/email-protection#4129242d3101222e2c31202f386f222e2c"><span class="__cf_email__" data-cfemail="422a272e3202212d2f32232c3b6c212d2f">[email&#160;protected]</span></a>
+                        <a href="mailto:{{ header_contact_info.email }}">{{ header_contact_info.email }}</a>
                     </div>
                 </li>
                 <li>
                     <!-- Contact Info Box -->
                     <div class="contact-info-box">
                         <span class="icon lnr-icon-clock"></span>
-                        <span class="title">Send Email</span>
-                        Mon - Sat 8:00 - 6:30, Sunday - CLOSED
+                        <span class="title">Working Hours</span>
+                        {{ header_contact_info.working_hours }}
                     </div>
                 </li>
             </ul>
     
-    
             <ul class="social-links">
-                <li><a href="#"><i class="fa fa-x"></i></a></li>
-                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="{{ header_social_links.twitter_link }}"><i class="fa fa-x"></i></a></li>
+                <li><a href="{{ header_social_links.facebook_link }}"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="{{ header_social_links.pinterest_link }}"><i class="fab fa-pinterest"></i></a></li>
+                <li><a href="{{ header_social_links.instagram_link }}"><i class="fab fa-instagram"></i></a></li>
             </ul>
         </nav>
     </div><!-- End Mobile Menu -->
@@ -144,7 +144,9 @@
             <div class="inner-container">
                 <!--Logo-->
                 <div class="logo">
-                    <a href="{% url 'home' %}"><img src="{% static 'images/logo-2.png' %}" alt=""></a>
+                    <a href="{{ header_logo.logo_link }}">
+                        <img src="{% url 'home' %}" alt="{{ header_logo.logo_alt_text }}" title="{{ header_logo.logo_alt_text }}">
+                    </a>
                 </div>
     
                 <!--Right Col-->
