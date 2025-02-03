@@ -154,9 +154,9 @@
 				{% for feature in features %}
 				<div class="feature-block-three col-lg-3 col-sm-6 wow fadeInUp"{% if not forloop.first %} data-wow-delay="{% widthratio forloop.counter 1 200 %}ms"{% endif %}>
 					<div class="inner-box">
-						<div class="icon-box"><i class="icon {{ feature.icon_class }}"></i></div>
+						<div class="icon-box"><i class="{{ feature.icon_class }}"></i></div>
 						<div class="title-box">
-							<h4 class="title"><a href="{{ feature.link }}">{{ feature.title|safe }}</a></h4>
+							<h4 class="title"><a href="{% url 'services_page' %}">{{ feature.title|safe }}</a></h4>
 						</div>
 					</div>
 				</div>

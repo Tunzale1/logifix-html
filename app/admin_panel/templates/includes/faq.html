@@ -1,0 +1,24 @@
+<!-- faq -->
+{% load static %}
+<!-- faq -->
+<div class="innerpage mt-25">
+    <h3>{{ faq_page.title }}</h3>
+    <p>{{ faq_page.description }}</p>
+    <ul class="accordion-box wow fadeInRight">
+        <!--Loop through FAQs-->
+        {% for faq in faqs %}
+        <!--Block-->
+        <li class="accordion block {% if forloop.first %}active-block{% endif %}">
+            <div class="acc-btn {% if forloop.first %}active{% endif %}">
+                {{ faq.question }}
+                <div class="icon fa fa-plus"></div>
+            </div>
+            <div class="acc-content {% if forloop.first %}current{% endif %}">
+                <div class="content">
+                    <div class="text">{{ faq.answer }}</div>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>

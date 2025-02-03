@@ -207,3 +207,21 @@ class ContactPage(models.Model):
 
     def __str__(self):
         return "Contact Page Content"
+    
+# faq-section
+from django.db import models
+
+class FAQ(models.Model):
+    question = models.CharField(max_length=255)
+    answer = models.TextField()
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.question
+
+class FAQPage(models.Model):
+    title = models.CharField(max_length=200, default="Frequently Asked Questions")
+    description = models.TextField(default="Lorem ipsum is simply free text used by copytyping refreshing.")
+
+    def __str__(self):
+        return "FAQ Page Content"

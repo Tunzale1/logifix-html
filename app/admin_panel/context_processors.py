@@ -15,6 +15,7 @@ from .models import (
 
 from .models import ContactPage
 
+from .models import FAQPage, FAQ
 
 def footer_data(request):
     return {
@@ -49,4 +50,10 @@ def about_page(request):
 def contact_page_data(request):
     return {
         'contact_page': ContactPage.objects.first(),
+    }
+
+def faq_data(request):
+    return {
+        'faq_page': FAQPage.objects.first(),
+        'faqs': FAQ.objects.filter(is_active=True),
     }

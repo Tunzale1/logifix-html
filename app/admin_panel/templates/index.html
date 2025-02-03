@@ -174,62 +174,29 @@
 	<!-- End About Section -->
 
 	<!-- Why Choose Us Two -->
+	{% with why_choose=why_choose_us %}
 	<section class="why-choose-us-two">
 		<div class="auto-container">
 			<div class="sec-title text-center">
-				<span class="sub-title">WHY SELECT US</span>
-				<h2>We create opportunity <br />to reach potential</h2>
+				<span class="sub-title">{{ why_choose.subtitle }}</span>
+				<h2>{{ why_choose.title }}</h2>
 			</div>
 			<div class="row">
 				<!-- Feature Block -->
-				<div class="feature-block col-lg-3 col-sm-6 wow fadeInUp">
+				{% for feature in features %}
+				<div class="feature-block col-lg-3 col-sm-6 wow fadeInUp" {% if not forloop.first %} data-wow-delay="{% widthratio forloop.counter 1 200 %}ms"{% endif %}>
 					<div class="inner-box">
-						<div class="icon-box"><i class="icon flaticon-cargo"></i></div>
-						<h4 class="title"><a href="page-service-details.html">On-Time <br />Deliveries</a></h4>
+						<div class="icon-box"><i class="{{ feature.icon_class }}"></i></div>
+						<h4 class="title"><a href="{% url 'services_page' %}">{{ feature.title|safe }}</a></h4>
 					</div>
 				</div>
-				<!-- Feature Block -->
-				<div class="feature-block col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="200ms">
-					<div class="inner-box">
-						<div class="icon-box"><i class="icon flaticon-cargo-boat"></i></div>
-						<h4 class="title"><a href="page-service-details.html">Ship <br />Transport</a> </h4>
-					</div>
-				</div>
-				<!-- Feature Block -->
-				<div class="feature-block col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="400ms">
-					<div class="inner-box">
-						<div class="icon-box"><i class="icon flaticon-global-2"></i></div>
-						<h4 class="title"><a href="page-service-details.html">Global Network <br />Coverage</a></h4>
-					</div>
-				</div>
-				<!-- Feature Block -->
-				<div class="feature-block col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="600ms">
-					<div class="inner-box">
-						<div class="icon-box"><i class="icon flaticon-warehouse"></i></div>
-						<h4 class="title"><a href="page-service-details.html">Warehousing and <br />Distribution</a></h4>
-					</div>
-				</div>
-				<!-- Feature Block -->
-				<div class="feature-block col-lg-3 col-sm-6 wow fadeInUp">
-					<div class="inner-box">
-						<div class="icon-box"><i class="icon flaticon-delivery-insurance-3"></i></div>
-						<h4 class="title"><a href="page-service-details.html">Reduced <br />Transit Time</a></h4>
-					</div>
-				</div>
-				<!-- Feature Block -->
-				<div class="feature-block col-lg-3 col-sm-6 wow fadeInUp"  data-wow-delay="200ms">
-					<div class="inner-box">
-						<div class="icon-box"><i class="icon flaticon-delivery-courier"></i></div>
-						<h4 class="title"><a href="page-service-details.html">Optimized <br />Cost</a></h4>
-					</div>
-				</div>
-
+				{% endfor %}
 				<!-- Info Banner -->
 				<div class="info-banner col-lg-6 col-md-12 col-sm-12 wow fadeInRight"  data-wow-delay="400ms">
 					<div class="content-box">
-						<figure class="image"><img src="{% static 'images/resource/image-1.jpg'%}" alt=""></figure>
-						<h4 class="title">Logifix Quick Transport</h4>
-						<div class="price">Starting From <span class="color6">$99.9</span> / <small>kg</small></div>
+						<figure class="image"><img src="{{ why_choose.promo_image.url }}" alt=""></figure>
+						<h4 class="title">{{ why_choose.promo_title }}</h4>
+						<div class="price">Starting From <span class="color6">${{ why_choose.starting_price }}</span> / <small>kg</small></div>
 						<div class="btn-box animate-2">
 							<a href="{% url 'contact_page' %}" class="theme-btn btn-style-two"><span class="btn-title">Get Started Now <i class="fa fa-arrow-right"></i></span></a>
 						</div>
@@ -238,6 +205,7 @@
 			</div>
 		</div>
 	</section>
+	{% endwith %}
 	<!-- End Why Choose Us Two -->
 
 	<!-- Call To Action -->
@@ -283,56 +251,7 @@
 			<div class="sec-title light">
 				
 				<div class="row align-items-end">
-					<div class="innerpage mt-25">
-						<h2>Frequently Asked Question</h2>
-						<p style="color:white">Lorem ipsum is simply free text used by copytyping refreshing. Neque porro est qui dolorem ipsum quia quaed inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-						<ul class="accordion-box wow fadeInRight">
-							<!--Block-->
-							<li class="accordion block">
-								<div class="acc-btn">Is my technology allowed on tech?
-									<div class="icon fa fa-plus"></div>
-								</div>
-								<div class="acc-content">
-									<div class="content">
-										<div>There are many variations of passages the majority have suffered alteration in some fo injected humour, or randomised words believable.</div>
-									</div>
-								</div>
-							</li>
-							<!--Block-->
-							<li class="accordion block active-block">
-								<div class="acc-btn active">How to soft launch your business?
-									<div class="icon fa fa-plus"></div>
-								</div>
-								<div class="acc-content current">
-									<div class="content">
-										<div>There are many variations of passages the majority have suffered alteration in some fo injected humour, or randomised words believable.</div>
-									</div>
-								</div>
-							</li>
-							<!--Block-->
-							<li class="accordion block">
-								<div class="acc-btn">How to turn visitors into contributors
-									<div class="icon fa fa-plus"></div>
-								</div>
-								<div class="acc-content">
-									<div class="content">
-										<div>There are many variations of passages the majority have suffered alteration in some fo injected humour, or randomised words believable.</div>
-									</div>
-								</div>
-							</li>
-							<!--Block-->
-							<li class="accordion block">
-								<div class="acc-btn">How can i find my solutions?
-									<div class="icon fa fa-plus"></div>
-								</div>
-								<div class="acc-content">
-									<div class="content">
-										<div>There are many variations of passages the majority have suffered alteration in some fo injected humour, or randomised words believable.</div>
-									</div>
-								</div>
-							</li>
-						</ul>
-					</div>
+					{% include 'includes/faq.html' %}
 				</div>
 			</div>
 		</div>

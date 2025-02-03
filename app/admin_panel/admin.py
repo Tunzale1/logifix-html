@@ -6,8 +6,10 @@ from django.utils.html import format_html
 from .models import (
     Service,
     FooterLogo, FooterContactInfo, FooterAboutSection, FooterUsefulLinks, FooterServices, FooterNewsletter, FooterCopyright,
-    HeaderTopInfo, HeaderSocialLinks, HeaderUsefulLinks, HeaderContactInfo, HeaderLogo, AboutPageHero, AboutSection, AboutCounter, WhyChooseUs, Feature, ContactPage
+    HeaderTopInfo, HeaderSocialLinks, HeaderUsefulLinks, HeaderContactInfo, HeaderLogo, AboutPageHero, AboutSection, AboutCounter, WhyChooseUs, Feature, ContactPage, 
 )
+
+from .models import FAQ, FAQPage
 
 # Custom Admin Classes for Grouping
 class FooterAdmin(admin.ModelAdmin):
@@ -24,6 +26,11 @@ class AboutAdmin(admin.ModelAdmin):
 
 class ContactAdmin(admin.ModelAdmin):
     list_display = ('__str__',)
+
+class FAQAdmin(admin.ModelAdmin):
+    list_display = ('question', 'answer', 'is_active')
+    list_filter = ('is_active',)
+    search_fields = ('question', 'answer')
 
 # Footer Section
 @admin.register(FooterLogo)
@@ -53,6 +60,7 @@ class FooterNewsletterAdmin(FooterAdmin):
 @admin.register(FooterCopyright)
 class FooterCopyrightAdmin(FooterAdmin):
     list_display = ('text', 'link')
+
 
 # Header Section
 @admin.register(HeaderTopInfo)
@@ -125,6 +133,11 @@ class ContactPageAdmin(ContactAdmin):
         }),
     )
       
+# faq-section
+@admin.register(FAQPage)
+class FAQPageAdmin(admin.ModelAdmin):
+    list_display = ('title', 'description')
+
 
 # Custom AdminSite to Group Models
 class CustomAdminSite(admin.AdminSite):
@@ -169,6 +182,12 @@ class CustomAdminSite(admin.AdminSite):
                 'name': 'Contact Page',  # New group for Contact Page
                 'models': [
                     ContactPage
+                ]
+            },
+            {
+                'name': 'FAQ',  # Add new FAQ group
+                'models': [
+                    FAQ, FAQPage
                 ]
             }
         ]
@@ -216,6 +235,8 @@ custom_admin_site.register(AboutCounter, AboutCounterAdmin)
 custom_admin_site.register(WhyChooseUs, WhyChooseUsAdmin)
 custom_admin_site.register(Feature, FeatureAdmin)
 custom_admin_site.register(ContactPage, ContactPageAdmin)
+custom_admin_site.register(FAQ, FAQAdmin) 
+custom_admin_site.register(FAQPage, FAQPageAdmin) 
 
 
 # Replace the default admin site
