@@ -9,7 +9,7 @@ from .models import (
     HeaderTopInfo, HeaderSocialLinks, HeaderUsefulLinks, HeaderContactInfo, HeaderLogo, AboutPageHero, AboutSection, AboutCounter, WhyChooseUs, Feature, ContactPage, 
 )
 
-from .models import FAQ, FAQPage
+from .models import FAQ, FAQPage, Client
 
 # Custom Admin Classes for Grouping
 class FooterAdmin(admin.ModelAdmin):
@@ -31,6 +31,7 @@ class FAQAdmin(admin.ModelAdmin):
     list_display = ('question', 'answer', 'is_active')
     list_filter = ('is_active',)
     search_fields = ('question', 'answer')
+
 
 # Footer Section
 @admin.register(FooterLogo)
@@ -138,6 +139,18 @@ class ContactPageAdmin(ContactAdmin):
 class FAQPageAdmin(admin.ModelAdmin):
     list_display = ('title', 'description')
 
+#slider-section
+@admin.register(Client)
+class ClientAdmin(admin.ModelAdmin):
+    list_display = ('name', 'display_logo', 'link', 'is_active')
+    list_filter = ('is_active',)
+    search_fields = ('name',)
+    
+    def display_logo(self, obj):
+        if obj.logo:
+            return format_html('<img src="{}" width="50" height="50" />', obj.logo.url)
+        return "No Logo"
+    display_logo.short_description = 'Logo'
 
 # Custom AdminSite to Group Models
 class CustomAdminSite(admin.AdminSite):
@@ -237,6 +250,7 @@ custom_admin_site.register(Feature, FeatureAdmin)
 custom_admin_site.register(ContactPage, ContactPageAdmin)
 custom_admin_site.register(FAQ, FAQAdmin) 
 custom_admin_site.register(FAQPage, FAQPageAdmin) 
+custom_admin_site.register(Client, ClientAdmin)
 
 
 # Replace the default admin site

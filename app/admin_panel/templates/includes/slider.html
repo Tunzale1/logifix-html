@@ -1,0 +1,19 @@
+{% load static %}
+<section class="clients-section-two">
+    <div class="auto-container"> 
+        <!-- Sponsors Outer -->
+        <div class="sponsors-outer"> 
+            <!-- Clients Carousel -->
+            <ul class="clients-carousel owl-carousel owl-theme disable-navs">
+                {% for client in clients %}
+                <li class="client-block">
+                    <a href="{% if client.link %}{{ client.link }}{% else %}#{% endif %}" class="image">
+                        <img src="{{ client.logo.url }}" alt="{{ client.name }}">
+                        <img src="{{ client.logo.url }}" alt="{{ client.name }}">
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>

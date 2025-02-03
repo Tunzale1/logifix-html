@@ -51,7 +51,7 @@
 								<img style="width: 100%" src="{{ service.image.url }}" alt="{{ service.title }}">
 								<img style="width: 100%" src="{{ service.image.url }}" alt="{{ service.title }}">
 							</figure>
-							<div class="icon"><i class="flaticon-team"></i></div>
+							<div class="icon"><i class="{{ service.icon_class }}"></i></div>
 						</div>
 						<div class="content-box">
 							<h4 class="title">
@@ -62,8 +62,8 @@
 								{% endif %}
 							</h4>
 							<ul class="services-list">
-								<li><i class="fa fa-sparkles"></i> {{ service.description }}</li>
-								<li><i class="fa fa-sparkles"></i> {{ service.description }}</li>
+								<li><i class="fa fa-sparkles"></i> {{ service.text_1 }}</li>
+								<li><i class="fa fa-sparkles"></i> {{ service.text_2 }}</li>
 							</ul>
 						</div>
 					</div>

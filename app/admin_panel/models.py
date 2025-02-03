@@ -4,9 +4,19 @@ from django.utils.text import slugify
 # service-details
 class Service(models.Model):
     slug = models.SlugField(unique=True, blank=True)
-    title = models.CharField(max_length=200)
-    description = models.TextField()
+    icon_class = models.CharField(max_length=50, default="flaticon-team")
+    title = models.CharField(max_length=200, default="Safety and Reliability")
+    text_1 = models.CharField(max_length=200, default="Worldwide service")
+    text_2 = models.CharField(max_length=200, default="24/7 Support")
     image = models.ImageField(upload_to='services/')
+    
+    overview = models.TextField(default="Lorem ipsum is simply free text used by copytyping refreshing...")
+    service_center_text = models.TextField(default="Lorem ipsum is simply free text used by copytyping refreshing...")
+    service_image_1 = models.ImageField(upload_to='services/details/', blank=True, null=True)
+    service_image_2 = models.ImageField(upload_to='services/details/', blank=True, null=True)
+    contact_title = models.CharField(max_length=200, default="Contact with us for any advice")
+    contact_phone = models.CharField(max_length=20, default="+892 ( 123 ) 112 - 9999")
+    contact_text = models.CharField(max_length=200, default="Need help? Talk to an expert")
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -225,3 +235,15 @@ class FAQPage(models.Model):
 
     def __str__(self):
         return "FAQ Page Content"
+    
+#slider-section
+from django.db import models
+
+class Client(models.Model):
+    name = models.CharField(max_length=100)
+    logo = models.ImageField(upload_to='clients/logos/')
+    link = models.URLField(blank=True, null=True)
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.name
