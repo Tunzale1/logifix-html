@@ -52,7 +52,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'admin_panel.context_processors.footer_data', 
-                'admin_panel.context_processors.header_data'
+                'admin_panel.context_processors.header_data',
+                'admin_panel.context_processors.about_page',
+                'admin_panel.context_processors.contact_page_data',
             ],
         },
     },

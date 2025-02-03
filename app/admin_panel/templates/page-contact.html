@@ -7,15 +7,11 @@
     <!-- Stylesheets -->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
-
     <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
     <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
-
     <!-- Responsive -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <!--[if lt IE 9]><script src="{% static 'js/html5shiv.js' %}"></script><![endif]-->
-    <!--[if lt IE 9]><script src="{% static 'js/respond.js' %}"></script><![endif]-->
 </head>
 
 <body>
@@ -26,10 +22,10 @@
     {% include 'includes/header.html' %}
 
     <!-- Start main-content -->
-    <section class="page-title" style="background-image: url({% static 'images/background/page-title.jpg' %});">
+    <section class="page-title" style="background-image: url({% if contact_page.hero_background_image %}{{ contact_page.hero_background_image.url }}{% else %}{% static 'images/background/page-title.jpg' %}{% endif %});">
         <div class="auto-container">
             <div class="title-outer text-center">
-                <h1 class="title">Contact Us</h1>
+                <h1 class="title">{{ contact_page.hero_title }}</h1>
                 <ul class="page-breadcrumb">
                     <li><a href="{% url 'home' %}">Home</a></li>
                     <li>Contact Us</li>
@@ -45,8 +41,8 @@
             <div class="row">
                 <div class="col-xl-7 col-lg-6">
                     <div class="sec-title">
-                        <span class="sub-title">Send us email</span>
-                        <h2>Feel free to write</h2>
+                        <span class="sub-title">{{ contact_page.form_subtitle }}</span>
+                        <h2>{{ contact_page.form_title }}</h2>
                     </div>
                     <!-- Contact Form -->
                     <form id="contact_form" name="contact_form" class="" action="{% url 'contact_page' %}" method="post">
@@ -87,9 +83,9 @@
                 <div class="col-xl-5 col-lg-6">
                     <div class="contact-details__right">
                         <div class="sec-title">
-                            <span class="sub-title">Need any help?</span>
-                            <h2>Get in touch with us</h2>
-                            <div class="text">Lorem ipsum is simply free text available dolor sit amet consectetur notted adipisicing elit sed do eiusmod tempor incididunt simply dolore magna.</div>
+                            <span class="sub-title">{{ contact_page.contact_info_subtitle }}</span>
+                            <h2>{{ contact_page.contact_info_title }}</h2>
+                            <div class="text">{{ contact_page.contact_info_description }}</div>
                         </div>
                         <ul class="list-unstyled contact-details__info">
                             <li>
@@ -97,8 +93,8 @@
                                     <span class="lnr-icon-phone-plus"></span>
                                 </div>
                                 <div class="text">
-                                    <h6 class="mb-1">Have any question?</h6>
-                                    <a href="tel:980089850"><span>Free</span> +92 (020)-9850</a>
+                                    <h6 class="mb-1">{{ contact_page.phone_title }}</h6>
+                                    <a href="tel:{{ contact_page.phone_number }}"><span>Free</span> {{ contact_page.phone_number }}</a>
                                 </div>
                             </li>
                             <li>
@@ -106,8 +102,8 @@
                                     <span class="lnr-icon-envelope1"></span>
                                 </div>
                                 <div class="text">
-                                    <h6 class="mb-1">Write email</h6>
-                                    <a href="mailto:needhelp@company.com">needhelp@company.com</a>
+                                    <h6 class="mb-1">{{ contact_page.email_title }}</h6>
+                                    <a href="mailto:{{ contact_page.email_address }}">{{ contact_page.email_address }}</a>
                                 </div>
                             </li>
                             <li>
@@ -115,8 +111,8 @@
                                     <span class="lnr-icon-location"></span>
                                 </div>
                                 <div class="text">
-                                    <h6 class="mb-1">Visit anytime</h6>
-                                    <span>66 broklyn golden street. New York</span>
+                                    <h6 class="mb-1">{{ contact_page.address_title }}</h6>
+                                    <span>{{ contact_page.address }}</span>
                                 </div>
                             </li>
                         </ul>
@@ -129,7 +125,7 @@
 
     <!-- Map Section-->
     <section class="map-section py-0">
-        <iframe class="map w-100" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=1%20Grafton%20Street,%20Dublin,%20Ireland+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+        <iframe class="map w-100" src="{{ contact_page.google_map_embed_url }}"></iframe>
     </section>
     <!--End Map Section-->
 
@@ -137,9 +133,6 @@
 
 </div>
 <!-- End Page Wrapper -->
-
-<!-- Scroll To Top -->
-<div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
 
 <!-- Scripts -->
 <script src="{% static 'js/jquery.js' %}"></script>

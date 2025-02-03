@@ -8,6 +8,13 @@ from .models import (
     HeaderTopInfo, HeaderSocialLinks, HeaderUsefulLinks, HeaderContactInfo, HeaderLogo
 )
 
+from .models import (
+    AboutPageHero, AboutSection, AboutCounter, 
+    WhyChooseUs, Feature, Service
+)
+
+from .models import ContactPage
+
 
 def footer_data(request):
     return {
@@ -27,4 +34,19 @@ def header_data(request):
         'header_social_links': HeaderSocialLinks.objects.first(),
         'header_useful_links': HeaderUsefulLinks.objects.first(),
         'header_contact_info': HeaderContactInfo.objects.first(),
+    }
+
+def about_page(request):
+    return {
+        'about_hero': AboutPageHero.objects.first(),
+        'about_section': AboutSection.objects.first(),
+        'about_counter': AboutCounter.objects.first(),
+        'why_choose_us': WhyChooseUs.objects.first(),
+        'features': Feature.objects.all(),
+        'services': Service.objects.all()[:4]  # Get first 4 services for the list
+    }
+
+def contact_page_data(request):
+    return {
+        'contact_page': ContactPage.objects.first(),
     }

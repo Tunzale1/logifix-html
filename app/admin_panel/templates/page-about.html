@@ -2,211 +2,189 @@
 <html lang="en">
 
 <head>
-<meta charset="utf-8">
-<title>Logifix | Logistic & Transport HTML Template | About Page</title>
-<!-- Stylesheets -->
-{% load static %}
-
-<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-<link href="{% static 'css/style.css' %}" rel="stylesheet">
-
-<link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
-<link rel="icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
-
-<!-- Responsive -->
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-<!--[if lt IE 9]><script src="js/html5shiv.js"></script><![endif]-->
-<!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
-</head>
+	<meta charset="utf-8">
+	<title>Logifix | Logistic & Transport HTML Template | About Page</title>
+	<!-- Stylesheets -->
+	{% load static %}
+	
+	<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+	<link href="{% static 'css/style.css' %}" rel="stylesheet">
+	
+	<link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
+	<link rel="icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
+	
+	<!-- Responsive -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<!--[if lt IE 9]><script src="js/html5shiv.js"></script><![endif]-->
+	<!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+	</head>
 
 <body>
 <div class="page-wrapper">
-  <!-- Preloader -->
-  <div class="preloader"><span class="loader"></span></div>
+    <div class="preloader"><span class="loader"></span></div>
     
-  {% include 'includes/header.html' %}
+    {% include 'includes/header.html' %}
 
-	<!-- Start main-content -->
-	<section class="page-title" style="background-image: url({% static 'images/background/page-title.jpg' %});">
-		<div class="auto-container">
-			<div class="title-outer text-center">
-				<h1 class="title">About Us</h1>
-				<ul class="page-breadcrumb">
-					<li><a href="{% url 'home' %}">Home</a></li>
-					<li>About Us</li>
-				</ul>
-			</div>
-		</div>
-	</section>
-	<!-- end main-content -->
+    <!-- Start main-content -->
+    {% with hero=about_hero %}
+    <section class="page-title" style="background-image: url({{ hero.background_image.url }});">
+        <div class="auto-container">
+            <div class="title-outer text-center">
+                <h1 class="title">{{ hero.title }}</h1>
+                <ul class="page-breadcrumb">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li>{{ hero.title }}</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    {% endwith %}
 
-  <!-- About Section -->
-	<section class="about-section-three">
-		<div class="auto-container">
-			<div class="row">
-				<!-- Content Column -->
-				<div class="content-column col-lg-5 order-2 wow fadeInRight">
-					<div class="inner-column">
-						<div class="sec-title style-three">
-							<span class="sub-title">WHO WE ARE</span>
-							<h2>We are best For secure Business Transport</h2>
-							<div class="text">With over four decades of experience providing solutions to large-scale enterprises who fail their duty through weakness will which is the same as saying through.</div>
-						</div>
+    <!-- About Section -->
+    {% with about=about_section %}
+    <section class="about-section-three">
+        <div class="auto-container">
+            <div class="row">
+                <div class="content-column col-lg-5 order-2 wow fadeInRight">
+                    <div class="inner-column">
+                        <div class="sec-title style-three">
+                            <span class="sub-title">{{ about.subtitle }}</span>
+                            <h2>{{ about.title }}</h2>
+                            <div class="text">{{ about.description }}</div>
+                        </div>
 
-						<div class="text-box">
-							<div class="info-box">
-								<i class="icon flaticon-global-1"></i>
-								<div class="txt">25+ Years <br />of Experience</div>
-							</div>
-							<ul class="list-style-two">
-								<li><i class="fas fa-star-christmas"></i> Supply Chain Solutions</li>
-								<li><i class="fas fa-star-christmas"></i> End-to-End Transportation</li>
-								<li><i class="fas fa-star-christmas"></i> Warehousing & Distribution</li>
-								<li><i class="fas fa-star-christmas"></i> Digital Solutions</li>
-							</ul>
-						</div>
-						<div class="btn-box">
-							<a href="{% url 'services_page' %}" class="theme-btn btn-style-two"><span class="btn-title">Explore More <i class="fa fa-arrow-right"></i></span></a>
-						</div>
-					</div>
-				</div>
+                        <div class="text-box">
+                            <div class="info-box">
+                                <i class="icon flaticon-global-1"></i>
+                                <div class="txt">{{ about.years_experience }}+ Years <br />of Experience</div>
+                            </div>
+                            <ul class="list-style-two">
+                                {% for service in services %}
+                                <li><i class="fas fa-star-christmas"></i> {{ service.title }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="btn-box">
+                            <a href="{% url 'services_page' %}" class="theme-btn btn-style-two">
+                                <span class="btn-title">Explore More <i class="fa fa-arrow-right"></i></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
-				<!-- Image Column -->
-				<div class="image-column col-lg-7 wow fadeInLeft">
-					<div class="image-box">
-						<figure class="image-1 overlay-anim wow fadeIn"><img src="{% static 'images/resource/about3-1.jpg' %}" alt=""></figure>
-						<figure class="image-2 overlay-anim wow fadeIn"><img src="{% static 'images/resource/about3-2.jpg' %}" alt=""></figure>
-						<div class="exp-box">
-							<figure class="image-3 wow fadeIn"><img src="{% static 'images/logo-icon.png' %}" alt=""></figure>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-  <!-- End About-Section -->
+                <div class="image-column col-lg-7 wow fadeInLeft">
+                    <div class="image-box">
+                        <figure class="image-1 overlay-anim wow fadeIn">
+                            <img src="{{ about.image_1.url }}" alt="">
+                        </figure>
+                        <figure class="image-2 overlay-anim wow fadeIn">
+                            <img src="{{ about.image_2.url }}" alt="">
+                        </figure>
+                        <div class="exp-box">
+                            <figure class="image-3 wow fadeIn">
+                                <img src="{{ about.logo_image.url }}" alt="">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endwith %}
 
-	<!-- Fun Fact Section-->
-	<section class="fun-fact-section">
-		<div class="auto-container">
-			<div class="fact-counter">
-				<div class="row">
-					<!-- Counter block-->
-					<div class="counter-block col-lg-4 col-sm-6 wow fadeInUp">
-						<div class="inner">
-							<div class="content">
-								<i class="icon flaticon-delivery-box-4"></i>
-								<div class="count-box"><span class="count-text" data-speed="3000" data-stop="541">0</span>+</div>
-								<h6 class="counter-title">Distribution Center</h6>
-							</div>
-						</div>
-					</div>
-					<!--Counter block-->
-					<div class="counter-block col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="300ms">
-						<div class="inner">
-							<div class="content">
-								<i class="icon flaticon-container"></i>
-								<div class="count-box"><span class="count-text" data-speed="3000" data-stop="35">0</span>+</div>
-								<h6 class="counter-title">Years Of Exprience</h6>
-							</div>
-						</div>
-					</div>
-					<!--Counter block-->
-					<div class="counter-block col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="600ms">
-						<div class="inner">
-							<div class="content">
-								<i class="icon flaticon-logistic"></i>
-								<div class="count-box"><span class="count-text" data-speed="3000" data-stop="147">0</span>+</div>
-								<h6 class="counter-title">Countries and Regions</h6>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- End Fun Fact Section-->
+    <!-- Fun Fact Section-->
+    {% with counter=about_counter %}
+    <section class="fun-fact-section">
+        <div class="auto-container">
+            <div class="fact-counter">
+                <div class="row">
+                    <div class="counter-block col-lg-4 col-sm-6 wow fadeInUp">
+                        <div class="inner">
+                            <div class="content">
+                                <i class="icon flaticon-delivery-box-4"></i>
+                                <div class="count-box">
+                                    <span class="count-text" data-speed="3000" data-stop="{{ counter.distribution_centers }}">0</span>+
+                                </div>
+                                <h6 class="counter-title">Distribution Center</h6>
+                            </div>
+                        </div>
+                    </div>
 
-  <!-- Services Section -->
-	<section class="why-choose-us-four pull-up">
-		<div class="bg bg-image" style="background-image: url(images/background/bg-why-choose-us1.jpg)"></div>
-		<div class="auto-container">
-			<div class="sec-title text-center style-three">
-				<span class="sub-title">Why select us</span>
-				<h2>We create opportunity <br />to reach potential</h2>
-			</div>
-			<div class="row">
-				<!-- Feature Block -->
-				<div class="feature-block-three col-lg-3 col-sm-6 wow fadeInUp">
+                    <div class="counter-block col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="300ms">
+                        <div class="inner">
+                            <div class="content">
+                                <i class="icon flaticon-container"></i>
+                                <div class="count-box">
+                                    <span class="count-text" data-speed="3000" data-stop="{{ counter.years_experience }}">0</span>+
+                                </div>
+                                <h6 class="counter-title">Years Of Experience</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="counter-block col-lg-4 col-sm-6 wow fadeInUp" data-wow-delay="600ms">
+                        <div class="inner">
+                            <div class="content">
+                                <i class="icon flaticon-logistic"></i>
+                                <div class="count-box">
+                                    <span class="count-text" data-speed="3000" data-stop="{{ counter.countries_regions }}">0</span>+
+                                </div>
+                                <h6 class="counter-title">Countries and Regions</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endwith %}
+
+
+    <!-- Why Choose Us Section -->
+    {% with why_choose=why_choose_us %}
+    <section class="why-choose-us-four pull-up">
+        <div class="bg bg-image" style="background-image: url({{ why_choose.background_image.url }})"></div>
+        <div class="auto-container">
+            <div class="sec-title text-center style-three">
+                <span class="sub-title">{{ why_choose.subtitle }}</span>
+                <h2>{{ why_choose.title }}</h2>
+            </div>
+            <div class="row">
+				{% for feature in features %}
+				<div class="feature-block-three col-lg-3 col-sm-6 wow fadeInUp"{% if not forloop.first %} data-wow-delay="{% widthratio forloop.counter 1 200 %}ms"{% endif %}>
 					<div class="inner-box">
-						<div class="icon-box"><i class="icon flaticon-cargo"></i></div>
-						<div class="title-box"><h4 class="title"><a href="page-service-details.html">On-Time <br />Deliveries</a></h4></div>
-					</div>
-				</div>
-				<!-- Feature Block -->
-				<div class="feature-block-three col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="200ms">
-					<div class="inner-box">
-						<div class="icon-box"><i class="icon flaticon-cargo-boat"></i></div>
-						<div class="title-box"><h4 class="title"><a href="page-service-details.html">Ship <br />Transport</a> </h4></div>
-					</div>
-				</div>
-				<!-- Feature Block -->
-				<div class="feature-block-three col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="400ms">
-					<div class="inner-box">
-						<div class="icon-box"><i class="icon flaticon-global-2"></i></div>
-						<div class="title-box"><h4 class="title"><a href="page-service-details.html">Global Network <br />Coverage</a></h4></div>
-					</div>
-				</div>
-				<!-- Feature Block -->
-				<div class="feature-block-three col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="600ms">
-					<div class="inner-box">
-						<div class="icon-box"><i class="icon flaticon-warehouse"></i></div>
-						<div class="title-box"><h4 class="title"><a href="page-service-details.html">Warehousing and <br />Distribution</a></h4></div>
-					</div>
-				</div>
-				<!-- Feature Block -->
-				<div class="feature-block-three col-lg-3 col-sm-6 wow fadeInUp order-lg-last">
-					<div class="inner-box">
-						<div class="icon-box"><i class="icon flaticon-delivery-insurance-3"></i></div>
-						<div class="title-box"><h4 class="title"><a href="page-service-details.html">Reduced <br />Transit Time</a></h4></div>
-					</div>
-				</div>
-				<!-- Feature Block -->
-				<div class="feature-block-three col-lg-3 col-sm-6 wow fadeInUp order-lg-last"  data-wow-delay="200ms">
-					<div class="inner-box">
-						<div class="icon-box"><i class="icon flaticon-delivery-courier"></i></div>
-						<div class="title-box"><h4 class="title"><a href="page-service-details.html">Optimized <br />Cost</a></h4></div>
-					</div>
-				</div>
-
-				<!-- Info Banner -->
-				<div class="info-banner col-lg-6 col-md-12 col-sm-12 wow fadeInRight"  data-wow-delay="400ms">
-					<div class="content-box">
-						<figure class="image"><img src="{% static 'images/resource/image-1.jpg' %}" alt=""></figure>
-						<h4 class="title">Logifix Quick Transport</h4>
-						<div class="price">Starting From <strong class="color6">$20</strong> / <small>kg</small></div>
-						<div class="btn-box animate-2">
-							<a href="{% url 'contact_page' %}" class="theme-btn btn-style-two"><span class="btn-title">Get Started Now <i class="fa fa-arrow-right"></i></span></a>
+						<div class="icon-box"><i class="icon {{ feature.icon_class }}"></i></div>
+						<div class="title-box">
+							<h4 class="title"><a href="{{ feature.link }}">{{ feature.title|safe }}</a></h4>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-	</section>
-  <!-- End Services Section -->
+				{% endfor %}
+                <div class="info-banner col-lg-6 col-md-12 col-sm-12 wow fadeInRight" data-wow-delay="400ms">
+                    <div class="content-box">
+                        <figure class="image"><img src="{{ why_choose.promo_image.url }}" alt=""></figure>
+                        <h4 class="title">{{ why_choose.promo_title }}</h4>
+                        <div class="price">Starting From <strong class="color6">${{ why_choose.starting_price }}</strong> / <small>{{ why_choose.price_unit }}</small></div>
+                        <div class="btn-box animate-2">
+                            <a href="{% url 'contact_page' %}" class="theme-btn btn-style-two">
+                                <span class="btn-title">Get Started Now <i class="fa fa-arrow-right"></i></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endwith %}
 
-  
-  {% include 'includes/footer.html' %}
-
-
+    {% include 'includes/footer.html' %}
 </div>
-<!-- End Page Wrapper -->
 
+<!-- End Page Wrapper -->
 
 <!-- Scroll To Top -->
 <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
-
 
 <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script src="{% static 'js/jquery.js' %}"></script>
@@ -220,7 +198,4 @@
 <script src="{% static 'js/owl.js' %}"></script>
 <script src="{% static 'js/script.js' %}"></script>
 </body>
-
-<!-- Mirrored from html.kodesolution.com/2024/logifix-html/page-about.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jan 2025 07:07:36 GMT -->
 </html>
-
