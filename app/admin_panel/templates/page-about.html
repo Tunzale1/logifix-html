@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>Logifix | Logistic & Transport HTML Template | About Page</title>
+	<title>Logifix | Logistic & Transport HTML Template | {{ header_top_info.about_page }}</title>
 	<!-- Stylesheets -->
 	{% load static %}
 	
@@ -33,8 +33,8 @@
             <div class="title-outer text-center">
                 <h1 class="title">{{ hero.title }}</h1>
                 <ul class="page-breadcrumb">
-                    <li><a href="{% url 'home' %}">Home</a></li>
-                    <li>{{ hero.title }}</li>
+                    <li><a href="{% url 'home' %}">{{ header_top_info.home_page }}</a></li>
+                    <li>{{ header_top_info.about_page }}</li>
                 </ul>
             </div>
         </div>
@@ -67,7 +67,7 @@
                         </div>
                         <div class="btn-box">
                             <a href="{% url 'services_page' %}" class="theme-btn btn-style-two">
-                                <span class="btn-title">Explore More <i class="fa fa-arrow-right"></i></span>
+                                <span class="btn-title"> {{ about.button_text }} <i class="fa fa-arrow-right"></i></span>
                             </a>
                         </div>
                     </div>
@@ -106,7 +106,7 @@
                                 <div class="count-box">
                                     <span class="count-text" data-speed="3000" data-stop="{{ counter.distribution_centers }}">0</span>+
                                 </div>
-                                <h6 class="counter-title">Distribution Center</h6>
+                                <h6 class="counter-title">{{ counter.counter_title_1 }}</h6>
                             </div>
                         </div>
                     </div>
@@ -118,7 +118,7 @@
                                 <div class="count-box">
                                     <span class="count-text" data-speed="3000" data-stop="{{ counter.years_experience }}">0</span>+
                                 </div>
-                                <h6 class="counter-title">Years Of Experience</h6>
+                                <h6 class="counter-title">{{ counter.counter_title_2 }}</h6>
                             </div>
                         </div>
                     </div>
@@ -130,7 +130,7 @@
                                 <div class="count-box">
                                     <span class="count-text" data-speed="3000" data-stop="{{ counter.countries_regions }}">0</span>+
                                 </div>
-                                <h6 class="counter-title">Countries and Regions</h6>
+                                <h6 class="counter-title">{{ counter.counter_title_3 }}</h6>
                             </div>
                         </div>
                     </div>
@@ -170,7 +170,7 @@
                         <div class="price">Starting From <strong class="color6">${{ why_choose.starting_price }}</strong> / <small>{{ why_choose.price_unit }}</small></div>
                         <div class="btn-box animate-2">
                             <a href="{% url 'contact_page' %}" class="theme-btn btn-style-two">
-                                <span class="btn-title">Get Started Now <i class="fa fa-arrow-right"></i></span>
+                                <span class="btn-title">{{ why_choose.button_text }}<i class="fa fa-arrow-right"></i></span>
                             </a>
                         </div>
                     </div>

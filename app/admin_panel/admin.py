@@ -9,7 +9,7 @@ from .models import (
     HeaderTopInfo, HeaderSocialLinks, HeaderUsefulLinks, HeaderContactInfo, HeaderLogo, AboutPageHero, AboutSection, AboutCounter, WhyChooseUs, Feature, ContactPage, 
 )
 
-from .models import FAQ, FAQPage, Client
+from .models import FAQ, FAQPage, Client, HomePageContent
 
 # Custom Admin Classes for Grouping
 class FooterAdmin(admin.ModelAdmin):
@@ -36,7 +36,7 @@ class FAQAdmin(admin.ModelAdmin):
 # Footer Section
 @admin.register(FooterLogo)
 class FooterLogoAdmin(FooterAdmin):
-    list_display = ('__str__', 'link')
+    list_display = ('__str__',)
 
 @admin.register(FooterContactInfo)
 class FooterContactInfoAdmin(FooterAdmin):
@@ -66,11 +66,11 @@ class FooterCopyrightAdmin(FooterAdmin):
 # Header Section
 @admin.register(HeaderTopInfo)
 class HeaderTopInfoAdmin(HeaderAdmin):
-    list_display = ('address', 'working_hours', 'email')
+    list_display = ('address', 'working_hours', 'email', 'home_page', 'about_page', 'services_page', 'contact_page')
 
 @admin.register(HeaderLogo)
 class HeaderLogoAdmin(HeaderAdmin):
-    list_display = ('logo', 'logo_alt_text', 'logo_link')
+    list_display = ('logo', 'logo_alt_text')
 
 @admin.register(HeaderSocialLinks)
 class HeaderSocialLinksAdmin(HeaderAdmin):
@@ -82,7 +82,7 @@ class HeaderUsefulLinksAdmin(HeaderAdmin):
 
 @admin.register(HeaderContactInfo)
 class HeaderContactInfoAdmin(HeaderAdmin):
-    list_display = ('phone_number', 'email', 'working_hours')
+    list_display = ('phone_number',)
 
 # Services Section
 @admin.register(Service)
@@ -96,15 +96,15 @@ class AboutPageHeroAdmin(AboutAdmin):
 
 @admin.register(AboutSection)
 class AboutSectionAdmin(AboutAdmin):
-    list_display = ('title', 'subtitle', 'years_experience')
+    list_display = ('title', 'subtitle', 'years_experience', 'button_text')
 
 @admin.register(AboutCounter)
 class AboutCounterAdmin(AboutAdmin):
-    list_display = ('distribution_centers', 'years_experience', 'countries_regions')
+    list_display = ('distribution_centers','counter_title_1', 'counter_title_2', 'counter_title_3', 'years_experience', 'countries_regions')
 
 @admin.register(WhyChooseUs)
 class WhyChooseUsAdmin(AboutAdmin):
-    list_display = ('title', 'subtitle', 'starting_price')
+    list_display = ('title', 'subtitle', 'starting_price', 'button_text')
 
 @admin.register(Feature)
 class FeatureAdmin(AboutAdmin):
@@ -152,6 +152,80 @@ class ClientAdmin(admin.ModelAdmin):
         return "No Logo"
     display_logo.short_description = 'Logo'
 
+
+#INDEX.HTML
+@admin.register(HomePageContent)
+class HomePageContentAdmin(admin.ModelAdmin):
+    fieldsets = (
+        ('Banner Section', {
+            'fields': (
+                'banner_badge_title', 
+                'banner_badge_count', 
+                'banner_main_title', 
+                'banner_subtitle', 
+                'banner_background_image', 
+                'banner_button_text'
+            )
+        }),
+        ('About Section', {
+            'fields': (
+                'about_subtitle', 
+                'about_title', 
+                'about_description', 
+                'about_experience_years', 
+                'about_experience_description',
+                'about_checkmark_1',
+                'about_checkmark_2',
+                'about_checkmark_3',
+                'about_image_1',
+                'about_image_2'
+            )
+        }),
+        ('Call to Action Section', {
+            'fields': (
+                'cta_title', 
+                'cta_background_image', 
+                'cta_video_url'
+            )
+        }),
+        ('Why Choose Us Section', {
+            'fields': (
+                'shape_image',
+                'why_choose_subtitle', 
+                'why_choose_title', 
+                'why_choose_description',
+                'feature_block_one_icon', 
+                'feature_block_one_title', 
+                'feature_block_one_text',
+                'feature_block_two_icon', 
+                'feature_block_two_title', 
+                'feature_block_two_text', 
+                'why_choose_image', 
+                'badge_image',
+            )
+        }),
+        ('Offer section', {
+            'fields':(
+                'offer_subtitle', 
+                'offer_title', 
+                'offer_description',
+                'list_item_1', 
+                'list_item_2', 
+                'list_item_3',
+                'button_text', 
+                'offer_image', 
+                'icon_image',
+                'counter_title', 
+                'counter_value',
+                'caption_icon', 
+                'caption_title',
+            )
+        }),
+        
+    )
+
+    list_display = ('__str__',)    
+
 # Custom AdminSite to Group Models
 class CustomAdminSite(admin.AdminSite):
     site_header = 'My Custom Admin'
@@ -167,16 +241,40 @@ class CustomAdminSite(admin.AdminSite):
         # Define custom groups
         custom_groups = [
             {
+                'name': 'Header',
+                'models': [
+                    HeaderTopInfo, HeaderLogo, HeaderSocialLinks, HeaderUsefulLinks, HeaderContactInfo
+                ]
+            },
+            {
                 'name': 'Footer',
                 'models': [
                     FooterLogo, FooterContactInfo, FooterAboutSection, FooterUsefulLinks,
                     FooterServices, FooterNewsletter, FooterCopyright
                 ]
             },
-            {
-                'name': 'Header',
+             {
+                'name': 'FAQ',  # Add new FAQ group
                 'models': [
-                    HeaderTopInfo, HeaderLogo, HeaderSocialLinks, HeaderUsefulLinks, HeaderContactInfo
+                    FAQ, FAQPage
+                ]
+            },
+            {
+                'name': 'Slider-images',
+                'models': [
+                    Client
+                ]
+            },
+            {
+        'name': 'Home Page',  # New group for HomePage
+        'models': [
+            HomePageContent
+                ]
+            },
+            {
+                'name': 'About page',
+                'models': [
+                    AboutPageHero, AboutSection, AboutCounter, WhyChooseUs, Feature
                 ]
             },
             {
@@ -186,23 +284,11 @@ class CustomAdminSite(admin.AdminSite):
                 ]
             },
             {
-                'name': 'About Page',
-                'models': [
-                    AboutPageHero, AboutSection, AboutCounter, WhyChooseUs, Feature
-                ]
-            },
-            {
                 'name': 'Contact Page',  # New group for Contact Page
                 'models': [
                     ContactPage
                 ]
             },
-            {
-                'name': 'FAQ',  # Add new FAQ group
-                'models': [
-                    FAQ, FAQPage
-                ]
-            }
         ]
 
         # Create a new app_list with custom groups
@@ -251,6 +337,7 @@ custom_admin_site.register(ContactPage, ContactPageAdmin)
 custom_admin_site.register(FAQ, FAQAdmin) 
 custom_admin_site.register(FAQPage, FAQPageAdmin) 
 custom_admin_site.register(Client, ClientAdmin)
+custom_admin_site.register(HomePageContent, HomePageContentAdmin)
 
 
 # Replace the default admin site

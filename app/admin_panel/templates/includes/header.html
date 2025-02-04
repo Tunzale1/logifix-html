@@ -10,7 +10,7 @@
                 <ul class="list-style-one">
                     <li><i class="fa fa-map-marker-alt"></i> {{ header_top_info.address }}</li>
                     <li><i class="far fa-clock"></i> {{ header_top_info.working_hours }}</li>
-                    <li><i class="fa fa-envelope"></i> <a href="mailto:{{ header_top_info.email }}"><span>Mail</span></a></li>
+                    <li><i class="fa fa-envelope"></i> <a href="mailto:{{ header_top_info.email }}"><span>{{ header_top_info.email }}</span></a></li>
                 </ul>
             </div>
     
@@ -43,10 +43,10 @@
             <div class="nav-outer">    
                 <nav class="nav main-menu">
                     <ul class="navigation">
-                        <li><a href="{% url 'home' %}">Home</a></li>
-                        <li><a href="{% url 'about_page' %}">About</a></li>
-                        <li><a href="{% url 'services_page' %}">Services</a></li>
-                        <li><a href="{% url 'contact_page' %}">Contact</a></li>
+                        <li><a href="{% url 'home' %}">{{ header_top_info.home_page }}</a></li>
+                        <li><a href="{% url 'about_page' %}">{{ header_top_info.about_page }}</a></li>
+                        <li><a href="{% url 'services_page' %}">{{ header_top_info.services_page }}</a></li>
+                        <li><a href="{% url 'contact_page' %}">{{ header_top_info.contact_page }}</a></li>
                     </ul>
                 </nav>
                 <!-- Main Menu End-->
@@ -55,7 +55,6 @@
             <div class="outer-box">                    
                 <a href="tel:{{ header_contact_info.phone_number }}" class="info-btn">
                     <i class="icon fa fa-headphones"></i>
-                    <small>Call Us Now</small>
                     {{ header_contact_info.phone_number }}
                 </a>
 
@@ -91,7 +90,6 @@
                     <!-- Contact Info Box -->
                     <div class="contact-info-box">
                         <i class="icon lnr-icon-phone-handset"></i>
-                        <span class="title">Call Now</span>
                         <a href="tel:{{ header_contact_info.phone_number }}">{{ header_contact_info.phone_number }}</a>
                     </div>
                 </li>
@@ -99,16 +97,14 @@
                     <!-- Contact Info Box -->
                     <div class="contact-info-box">
                         <span class="icon lnr-icon-envelope1"></span>
-                        <span class="title">Send Email</span>
-                        <a href="mailto:{{ header_contact_info.email }}">{{ header_contact_info.email }}</a>
+                        <a href="mailto:{{ header_top_info.email }}">{{ header_top_info.email }}</a>
                     </div>
                 </li>
                 <li>
                     <!-- Contact Info Box -->
                     <div class="contact-info-box">
                         <span class="icon lnr-icon-clock"></span>
-                        <span class="title">Working Hours</span>
-                        {{ header_contact_info.working_hours }}
+                        {{ header_top_info.working_hours }}
                     </div>
                 </li>
             </ul>

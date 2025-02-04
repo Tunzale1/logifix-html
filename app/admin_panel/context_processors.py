@@ -19,6 +19,9 @@ from .models import FAQPage, FAQ
 
 from .models import Client
 
+from .models import HomePageContent
+
+
 def footer_data(request):
     return {
         'footer_logo': FooterLogo.objects.first(),
@@ -63,4 +66,10 @@ def faq_data(request):
 def clients_data(request):
     return {
         'clients': Client.objects.filter(is_active=True),
+    }
+
+
+def home_page_data(request):
+    return {
+        'home_page_content': HomePageContent.objects.first(),
     }

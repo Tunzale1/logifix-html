@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Logifix | Logistic & Transport HTML Template | Contact Page</title>
+    <title>Logifix | Logistic & Transport HTML Template | {{ header_top_info.contact_page }}</title>
     <!-- Stylesheets -->
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
@@ -27,8 +27,8 @@
             <div class="title-outer text-center">
                 <h1 class="title">{{ contact_page.hero_title }}</h1>
                 <ul class="page-breadcrumb">
-                    <li><a href="{% url 'home' %}">Home</a></li>
-                    <li>Contact Us</li>
+                    <li><a href="{% url 'home' %}">{{ header_top_info.home_page }}</a></li>
+                    <li>{{ header_top_info.contact_page }}</li>
                 </ul>
             </div>
         </div>
@@ -94,7 +94,7 @@
                                 </div>
                                 <div class="text">
                                     <h6 class="mb-1">{{ contact_page.phone_title }}</h6>
-                                    <a href="tel:{{ contact_page.phone_number }}"><span>Free</span> {{ contact_page.phone_number }}</a>
+                                    <a href="tel:{{ contact_page.phone_number }}">{{ contact_page.phone_number }}</a>
                                 </div>
                             </li>
                             <li>

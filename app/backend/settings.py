@@ -57,6 +57,7 @@ TEMPLATES = [
                 'admin_panel.context_processors.contact_page_data',
                 'admin_panel.context_processors.faq_data',
                 'admin_panel.context_processors.clients_data',
+                'admin_panel.context_processors.home_page_data',
             ],
         },
     },
