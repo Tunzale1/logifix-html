@@ -20,6 +20,7 @@ from .models import FAQPage, FAQ
 from .models import Client
 
 from .models import HomePageContent
+from .models import SiteSettings
 
 
 def footer_data(request):
@@ -73,3 +74,7 @@ def home_page_data(request):
     return {
         'home_page_content': HomePageContent.objects.first(),
     }
+
+def site_settings(request):
+    site_settings = SiteSettings.objects.first()  # Get the first settings entry
+    return {'site_settings': site_settings}

@@ -9,7 +9,8 @@ from .models import (
     HeaderTopInfo, HeaderSocialLinks, HeaderUsefulLinks, HeaderContactInfo, HeaderLogo, AboutPageHero, AboutSection, AboutCounter, WhyChooseUs, Feature, ContactPage, 
 )
 
-from .models import FAQ, FAQPage, Client, HomePageContent
+from .models import FAQ, FAQPage, Client, HomePageContent, SiteSettings
+
 
 # Custom Admin Classes for Grouping
 class FooterAdmin(admin.ModelAdmin):
@@ -226,6 +227,12 @@ class HomePageContentAdmin(admin.ModelAdmin):
 
     list_display = ('__str__',)    
 
+#site-settings
+@admin.register(SiteSettings)
+class SiteSettingsAdmin(admin.ModelAdmin):
+    list_display = ('title','description', 'meta_keywords')
+
+
 # Custom AdminSite to Group Models
 class CustomAdminSite(admin.AdminSite):
     site_header = 'My Custom Admin'
@@ -240,6 +247,7 @@ class CustomAdminSite(admin.AdminSite):
 
         # Define custom groups
         custom_groups = [
+            {'name': 'Site Settings', 'models': [SiteSettings]},
             {
                 'name': 'Header',
                 'models': [
@@ -266,12 +274,6 @@ class CustomAdminSite(admin.AdminSite):
                 ]
             },
             {
-        'name': 'Home Page',  # New group for HomePage
-        'models': [
-            HomePageContent
-                ]
-            },
-            {
                 'name': 'About page',
                 'models': [
                     AboutPageHero, AboutSection, AboutCounter, WhyChooseUs, Feature
@@ -287,6 +289,12 @@ class CustomAdminSite(admin.AdminSite):
                 'name': 'Contact Page',  # New group for Contact Page
                 'models': [
                     ContactPage
+                ]
+            },
+            {
+        'name': 'Home Page',  # New group for HomePage
+        'models': [
+            HomePageContent
                 ]
             },
         ]
@@ -315,6 +323,7 @@ class CustomAdminSite(admin.AdminSite):
 custom_admin_site = CustomAdminSite(name='custom_admin')
 
 # Register all models with the custom admin site
+custom_admin_site.register(SiteSettings, SiteSettingsAdmin)
 custom_admin_site.register(Service, ServiceAdmin)
 custom_admin_site.register(FooterLogo, FooterLogoAdmin)
 custom_admin_site.register(FooterContactInfo, FooterContactInfoAdmin)

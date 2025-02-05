@@ -3,13 +3,16 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Logifix | Logistic & Transport HTML Template | Service Details Page</title>
+    <title> {{ site_settings.title }} | {{ service.title }}</title>
+    <meta name="keywords" content="{{ site_settings.meta_keywords }}">
+    <meta name="description" content="{{ site_settings.description }}">
     <!-- Stylesheets -->
     {% load static %}
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
-    <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
+
+    <link rel="shortcut icon" href="{{ site_settings.favicon.url }}" type="image/x-icon">
+    <link rel="icon" href="{{ site_settings.favicon.url }}" type="image/x-icon">
     <!-- Responsive -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -25,12 +28,12 @@
         {% include 'includes/header.html' %}
 
         <!-- Start main-content -->
-        <section class="page-title" style="background-image: url({% static 'images/background/page-title.jpg' %});">
+        <section class="page-title" style="background-image: url({{ service.service_details_background_image.url }});
             <div class="auto-container">
                 <div class="title-outer text-center">
                     <h1 class="title">{{ service.title }}</h1>
                     <ul class="page-breadcrumb">
-                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'home' %}">{{ header_top_info.home_page }}</a></li>
                         <li>Service Details</li>
                     </ul>
                 </div>
@@ -87,11 +90,11 @@
                     <div class="col-xl-8 col-lg-8">
                         <div class="services-details__content">
                             <img src="{{ service.image.url }}" alt="{{ service.title }}" />
-                            <h3 class="mt-4">Service Overview</h3>
+                            <h3 class="mt-4">{{ service.overview_title }}</h3>
                             <p>{{ service.overview }}</p>
                             <div class="content mt-40">
                                 <div class="text">
-                                    <h3>Service Center</h3>
+                                    <h3>{{ service.center_title}}</h3>
                                     <p>{{ service.service_center_text }}</p>
                                 </div>
                                 <div class="feature-list mt-4">

@@ -3,6 +3,8 @@ from django.utils.text import slugify
 
 # service-details
 class Service(models.Model):
+    services_page_title =  models.CharField(max_length=200, default="Services")  
+    services_background_image =  models.ImageField(upload_to='services/', default='images/background/page-title.jpg')
     slug = models.SlugField(unique=True, blank=True)
     icon_class = models.CharField(max_length=50, default="flaticon-team")
     title = models.CharField(max_length=200, default="Safety and Reliability")
@@ -10,7 +12,10 @@ class Service(models.Model):
     text_2 = models.CharField(max_length=200, default="24/7 Support")
     image = models.ImageField(upload_to='services/')
     
+    service_details_background_image = models.ImageField(upload_to='services/details', default='images/background/page-title.jpg')
+    overview_title = models.CharField(max_length=200, default="Service Overview")
     overview = models.TextField(default="Lorem ipsum is simply free text used by copytyping refreshing...")
+    center_title = models.CharField(max_length=200, default="Service Center")
     service_center_text = models.TextField(default="Lorem ipsum is simply free text used by copytyping refreshing...")
     service_image_1 = models.ImageField(upload_to='services/details/', blank=True, null=True)
     service_image_2 = models.ImageField(upload_to='services/details/', blank=True, null=True)
@@ -256,11 +261,11 @@ class Client(models.Model):
     
 
 # INDEX.HTML
-
 class HomePageContent(models.Model):
     # Banner Section
     banner_badge_title = models.CharField(max_length=100, default='TRUSTED BY')
     banner_badge_count = models.IntegerField(default=10)
+    banner_badge_text = models.CharField(max_length=100, default='Fast and Reliable Shipping')
     banner_main_title = models.CharField(max_length=200, default='Transport Solution 24/7')
     banner_subtitle = models.TextField(default='We strongly support best practice sharing across our operations around the world and across various')
     banner_background_image = models.ImageField(upload_to='homepage/banner/')
@@ -280,10 +285,12 @@ class HomePageContent(models.Model):
     about_image_1 = models.ImageField(upload_to='homepage/about/')
     about_image_2 = models.ImageField(upload_to='homepage/about/')
 
+
      # Call to Action Section
     cta_title = models.CharField(max_length=200, default='Logistics & Cargo For Business')
     cta_background_image = models.ImageField(upload_to='homepage/cta/')
     cta_video_url = models.URLField(blank=True, null=True)
+    cta_image_man = models.ImageField(upload_to='homepage/cta/', default='images/resource/why-choose3-1.png')
 
     # Why Choose Us Section
     shape_image = models.ImageField(upload_to='images/icons/', default='images/icons/shape-1.png')
@@ -291,11 +298,10 @@ class HomePageContent(models.Model):
     why_choose_title = models.CharField(max_length=200, default='We create opportunity to reach potential')
     why_choose_description = models.TextField(default='There are many variations of passages of available but majority have suffered alteration in some form.')
 
-    feature_block_one_icon = models.CharField(max_length=50, default='flaticon-delivery-insurance-1')
+
     feature_block_one_title = models.CharField(max_length=100, default='Safety and Reliability')
     feature_block_one_text = models.TextField(default='Aenean placerat ut lacus nec pulvinar. Donce eu leo ante at commodo diam dolor sit amet')
 
-    feature_block_two_icon = models.CharField(max_length=50, default='flaticon-logistics-6')
     feature_block_two_title = models.CharField(max_length=100, default='Shipping Worldwide')
     feature_block_two_text = models.TextField(default='Aenean placerat ut lacus nec pulvinar. Donce eu leo ante at commodo diam dolor sit amet')
 
@@ -318,8 +324,19 @@ class HomePageContent(models.Model):
     counter_title = models.CharField(max_length=100, default='Trusted by')
     counter_value = models.IntegerField(default=4890)
 
-    caption_icon = models.CharField(max_length=50, default='flaticon-logistics-2')
+    caption_title = models.CharField(max_length=200, default='Moving Your Products accross border')
 
 
     def __str__(self):
         return "Home Page Content"
+    
+
+#site-settings
+class SiteSettings(models.Model):
+    title = models.CharField(max_length=150, help_text="Website title")
+    favicon = models.ImageField(upload_to='favicons/', help_text="Upload favicon image", default='images/favicon.png')
+    description = models.CharField(max_length=200, help_text="Add your site description here (150-160 characters optimal)", blank=True, null=True)
+    meta_keywords = models.CharField(max_length=255, help_text="Comma-separated keywords for SEO", blank=True, null=True)
+
+    def __str__(self):
+        return self.title

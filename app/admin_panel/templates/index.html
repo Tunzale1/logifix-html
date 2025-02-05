@@ -3,15 +3,18 @@
 
 <head>
 <meta charset="utf-8">
-<title>Logifix | Logistic & Transport HTML Template | Home Page 02</title>
+<title> {{ site_settings.title }} </title>
+<meta name="keywords" content="{{ site_settings.meta_keywords }}">
+<meta name="description" content="{{ site_settings.description }}">
 <!-- Stylesheets -->
 
 {% load static %}
 <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
-<link rel="shortcut icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
-<link rel="icon" href="{% static 'images/favicon.png' %}" type="image/x-icon">
+<link rel="shortcut icon" href="{{ site_settings.favicon.url }}" type="image/x-icon">
+<link rel="icon" href="{{ site_settings.favicon.url }}" type="image/x-icon">
+
 
 <!-- Responsive -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -41,11 +44,11 @@
 						<div class="inner">
 							<div class="content">
 								<div class="counter-title">{{ home_page_content.banner_badge_title }}</div>
-								<div class="count-box"><span class="count-text" data-speed="1000" data-stop="10">0</span>K<span class="count-text-plus">+</span></div>
+								<div class="count-box"><span class="count-text" data-speed="1000" data-stop="{{ home_page_content.banner_badge_count }}">0</span><span class="count-text-plus">+</span></div>
 							</div>
 						</div>
 					</div>
-					<div class="txt">Fast and Reliable <br />Shipping</div>
+					<div class="txt">{{ home_page_content.banner_badge_text }}</div>
 				</div>
 				<h1 class="title wow fadeInLeft" data-wow-delay="900ms">{{ home_page_content.banner_main_title }}</h1>
 				<div class="text wow fadeInLeft" data-wow-delay="1200ms">{{ home_page_content.banner_subtitle }}</div>
@@ -63,7 +66,7 @@
 			<div class="outer-box">
 				<div class="row">
 					<!-- Service Block-->
-					{% for service in services %}
+					{% for service in services|slice:":3" %}
 					<div class="service-block-two col-lg-4 col-md-6 col-sm-12 wow fadeInUp" {% if not forloop.first %} data-wow-delay="{% widthratio forloop.counter 1 200 %}ms"{% endif %}>
 						<div class="inner-box">
 							<div class="image-box service-block-two-images">
@@ -118,7 +121,7 @@
 							<li><i class="far fa-check-circle"></i> {{ home_page_content.about_checkmark_3 }}</li>
 						</ul>
 						<div class="btn-box">
-							<a href="{% url 'about_page' %}" class="theme-btn btn-style-two"><span class="btn-title">Get Started Now <i class="fa fa-long-arrow-right"></i></span></a>
+							<a href="{% url 'about_page' %}" class="theme-btn btn-style-two"><span class="btn-title"> {{ home_page_content.button_text }} <i class="fa fa-long-arrow-right"></i></span></a>
 						</div>
 					</div>
 				</div>
@@ -160,7 +163,7 @@
 						<h4 class="title">{{ why_choose.promo_title }}</h4>
 						<div class="price">Starting From <span class="color6">${{ why_choose.starting_price }}</span> / <small>kg</small></div>
 						<div class="btn-box animate-2">
-							<a href="{% url 'contact_page' %}" class="theme-btn btn-style-two"><span class="btn-title">Get Started Now <i class="fa fa-arrow-right"></i></span></a>
+							<a href="{% url 'contact_page' %}" class="theme-btn btn-style-two"><span class="btn-title">{{ home_page_content.button_text }}<i class="fa fa-arrow-right"></i></span></a>
 						</div>
 					</div>
 				</div>
@@ -184,7 +187,7 @@
 								<h2>{{ home_page_content.cta_title }}</h2>
 							</div>
 							<div class="info-box">
-								<a href="{% url 'contact_page' %}" class="theme-btn btn-style-two dark-bg hover-light btn-lg"><span class="btn-title">Get Started Now <i class="fa fa-arrow-right"></i></span></a>
+								<a href="{% url 'contact_page' %}" class="theme-btn btn-style-two dark-bg hover-light btn-lg"><span class="btn-title"> {{ home_page_content.button_text }} <i class="fa fa-arrow-right"></i></span></a>
 							</div>
 						</div>
 					</div>
@@ -192,7 +195,7 @@
 					<!-- Image Column -->
 					<div class="image-column col-lg-4 col-md-12">
 						<div class="inner-column">
-							<figure class="image"><img src="{% static 'images/resource/man-1.png' %}" alt=""></figure>
+							<figure class="image"><img src="{{ home_page_content.cta_image_man.url }}" alt=""></figure>
 							<div class="video-box">
 								<a href="{{home_page_content.cta_video_url}}" class="play-btn" data-fancybox="" data-caption=""><i class="fa fa-play" aria-hidden="true"></i></a>
 							</div>
@@ -239,14 +242,14 @@
 						</div>
 						<div class="feature-block-two">
 							<div class="inner">
-								<div class="icon-box"><i class="icon {{ home_page_content.feature_block_one_icon }}"></i></div>
+								<div class="icon-box"><i class="icon flaticon-delivery-insurance-1"></i></div>
 								<h6 class="title">{{ home_page_content.feature_block_one_title }}</h6>
 								<p class="text">{{ home_page_content.feature_block_one_text }}</p>
 							</div>
 						</div>
 						<div class="feature-block-two">
 							<div class="inner">
-								<div class="icon-box"><i class="icon {{ home_page_content.feature_block_two_icon }}"></i></div>
+								<div class="icon-box"><i class="icon flaticon-logistics-6"></i></div>
 								<h6 class="title">{{ home_page_content.feature_block_two_title }}</h6>
 								<p class="text">{{ home_page_content.feature_block_two_text }}</p>
 							</div>
