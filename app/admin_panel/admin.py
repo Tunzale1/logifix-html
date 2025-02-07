@@ -3,13 +3,14 @@ from django.utils.text import capfirst
 from django.utils.module_loading import import_string
 from django.urls import reverse
 from django.utils.html import format_html
+from adminsortable2.admin import SortableAdminMixin
 from .models import (
     Service,
     FooterLogo, FooterContactInfo, FooterAboutSection, FooterUsefulLinks, FooterServices, FooterNewsletter, FooterCopyright,
     HeaderTopInfo, HeaderSocialLinks, HeaderUsefulLinks, HeaderContactInfo, HeaderLogo, AboutPageHero, AboutSection, AboutCounter, WhyChooseUs, Feature, ContactPage, 
 )
 
-from .models import FAQ, FAQPage, Client, HomePageContent, SiteSettings
+from .models import FAQ, FAQPage, Client, HomePageContent, SiteSettings, CustomersPageSettings
 
 
 # Custom Admin Classes for Grouping
@@ -140,11 +141,11 @@ class ContactPageAdmin(ContactAdmin):
 class FAQPageAdmin(admin.ModelAdmin):
     list_display = ('title', 'description')
 
-#slider-section
+#customer-section
 @admin.register(Client)
-class ClientAdmin(admin.ModelAdmin):
-    list_display = ('name', 'display_logo', 'link', 'is_active')
-    list_filter = ('is_active',)
+class ClientAdmin(SortableAdminMixin, admin.ModelAdmin):
+    list_display = ('name', 'display_logo', 'link', 'is_active', 'company_type')
+    list_filter = ('is_active', 'company_type')
     search_fields = ('name',)
     
     def display_logo(self, obj):
@@ -153,6 +154,10 @@ class ClientAdmin(admin.ModelAdmin):
         return "No Logo"
     display_logo.short_description = 'Logo'
 
+
+@admin.register(CustomersPageSettings)
+class CustomersPageSettingsAdmin(admin.ModelAdmin):
+    list_display = ('page_title',)
 
 #INDEX.HTML
 @admin.register(HomePageContent)
@@ -268,8 +273,9 @@ class CustomAdminSite(admin.AdminSite):
                 ]
             },
             {
-                'name': 'Slider-images',
+                'name': 'Customers',
                 'models': [
+                    CustomersPageSettings,
                     Client
                 ]
             },
@@ -346,6 +352,7 @@ custom_admin_site.register(ContactPage, ContactPageAdmin)
 custom_admin_site.register(FAQ, FAQAdmin) 
 custom_admin_site.register(FAQPage, FAQPageAdmin) 
 custom_admin_site.register(Client, ClientAdmin)
+custom_admin_site.register(CustomersPageSettings,CustomersPageSettingsAdmin)
 custom_admin_site.register(HomePageContent, HomePageContentAdmin)
 
 

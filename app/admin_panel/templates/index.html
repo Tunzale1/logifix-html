@@ -60,40 +60,6 @@
 	</section>
 	<!-- End Banner Section Two -->
 
-	<!-- Services Section Two -->
-	<section class="services-section-two pull-up">
-		<div class="auto-container">
-			<div class="outer-box">
-				<div class="row">
-					<!-- Service Block-->
-					{% for service in services|slice:":3" %}
-					<div class="service-block-two col-lg-4 col-md-6 col-sm-12 wow fadeInUp" {% if not forloop.first %} data-wow-delay="{% widthratio forloop.counter 1 200 %}ms"{% endif %}>
-						<div class="inner-box">
-							<div class="image-box service-block-two-images">
-								<figure class="image">
-									<img src="{{ service.image.url }}" alt="">
-									<img src="{{ service.image.url }}" alt="">
-								</figure>
-								<div class="icon"><i class="{{ service.icon_class }}"></i></div>
-							</div>
-							<div class="content-box">
-								<h4 class="title"><a href="page-service-details.html">{{ service.title }}</a></h4>
-								<ul class="services-list">
-									<li><i class="fa fa-sparkles"></i> {{ service.text_1 }}</li>
-									<li><i class="fa fa-sparkles"></i> {{ service.text_2 }}</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					{% endfor %}
-				</div>
-			</div>
-
-			<div class="bottom-text text-center">2.6k Companies & Individuals Trusted Us. for our service <a href="{% url 'services_page' %}">All Services</a></div>
-		</div>
-	</section>
-	<!--End Services Two Section -->
-
 	<!-- About Section -->
 	<section class="about-section-two pull-up">
 		<div class="auto-container">
@@ -138,41 +104,6 @@
 	</section>
 	<!-- End About Section -->
 
-	<!-- Why Choose Us Two -->
-	{% with why_choose=why_choose_us %}
-	<section class="why-choose-us-two">
-		<div class="auto-container">
-			<div class="sec-title text-center">
-				<span class="sub-title">{{ why_choose.subtitle }}</span>
-				<h2>{{ why_choose.title }}</h2>
-			</div>
-			<div class="row">
-				<!-- Feature Block -->
-				{% for feature in features %}
-				<div class="feature-block col-lg-3 col-sm-6 wow fadeInUp" {% if not forloop.first %} data-wow-delay="{% widthratio forloop.counter 1 200 %}ms"{% endif %}>
-					<div class="inner-box">
-						<div class="icon-box"><i class="{{ feature.icon_class }}"></i></div>
-						<h4 class="title"><a href="{% url 'services_page' %}">{{ feature.title|safe }}</a></h4>
-					</div>
-				</div>
-				{% endfor %}
-				<!-- Info Banner -->
-				<div class="info-banner col-lg-6 col-md-12 col-sm-12 wow fadeInRight"  data-wow-delay="400ms">
-					<div class="content-box">
-						<figure class="image"><img src="{{ why_choose.promo_image.url }}" alt="{{ why_choose.promo_title }}"></figure>
-						<h4 class="title">{{ why_choose.promo_title }}</h4>
-						<div class="price">Starting From <span class="color6">${{ why_choose.starting_price }}</span> / <small>kg</small></div>
-						<div class="btn-box animate-2">
-							<a href="{% url 'contact_page' %}" class="theme-btn btn-style-two"><span class="btn-title">{{ home_page_content.button_text }}<i class="fa fa-arrow-right"></i></span></a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	{% endwith %}
-	<!-- End Why Choose Us Two -->
-
 	<!-- Call To Action -->
 	<section class="call-to-action">
 		<div class="auto-container">
@@ -208,20 +139,47 @@
 	<!--End Call To Action -->
 
 	<!-- Project Section -->
-	<section class="projects-section-two pb-0">
-		
-		<div class="bg bg-pattern-5"></div>
-		<div class="auto-container">
-			
-			<div class="sec-title light">
-				
-				<div class="row align-items-end">
-					{% include 'includes/faq.html' %}
-				</div>
-			</div>
-		</div>
-	</section>
-    <!-- End Project Section -->
+<section class="projects-section-two pb-0">
+    <div class="bg bg-pattern-5"></div>
+    <div class="auto-container">
+        <div class="sec-title light">
+            <div class="row align-items-end">
+                <div class="col-md-12">
+                    <h2>PREVIOUS GALLERIES</h2>
+                    <p>We operate more than 68+ galleries worldwide. Explore more about our services below.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                {% for service in services %}
+                <div class="col-md-4 mb-4">
+                    <div class="project-block">
+                        <div class="inner-box">
+                            <figure class="image">
+                                <a href="{% url 'service_detail' service.slug %}">
+                                    <img src="{{ service.image.url }}" alt="{{ service.title }}" class="img-fluid">
+                                </a>
+                            </figure>
+                            <div class="content-box">
+                                <div class="inner">
+                                    <h4 class="title">
+                                        <a href="{% url 'service_detail' service.slug %}">{{ service.title }}</a>
+                                    </h4>
+                                    <a href="{% url 'service_detail' service.slug %}" class="theme-btn read-more">
+                                        <i class="fa fa-plus"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Project Section -->
+
 
 	<!-- Clients Section -->
     {% include 'includes/slider.html' %}
@@ -314,6 +272,23 @@
 		</div>
 	</section>
 	<!-- End Offer Section -->
+
+	<!-- FAQ Section -->
+	<section class="projects-section-two pb-0">
+		
+		<div class="bg bg-pattern-5"></div>
+		<div class="auto-container">
+			
+			<div class="sec-title light">
+				
+				<div class="row align-items-end">
+					
+					{% include 'includes/faq.html' %}
+				</div>
+			</div>
+		</div>
+	</section>
+    <!-- End FAQ Section -->
 
 
 	{% include 'includes/footer.html' %}

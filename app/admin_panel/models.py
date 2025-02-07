@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from adminsortable2.admin import SortableAdminMixin
 
 # service-details
 class Service(models.Model):
@@ -104,6 +105,7 @@ class HeaderTopInfo(models.Model):
     about_page = models.CharField(max_length=100, default="About")
     services_page = models.CharField(max_length=100, default="Services")
     contact_page = models.CharField(max_length=100, default="Contact")
+    customers_page =  models.CharField(max_length=100, default="Customers")
 
     def __str__(self):
         return "Header Top Info"
@@ -250,11 +252,32 @@ class FAQPage(models.Model):
 #slider-section
 from django.db import models
 
+
+class CustomersPageSettings(models.Model):
+    background_image = models.ImageField(upload_to='clients/', default='images/background/page-title.jpg')
+    page_title = models.CharField(max_length=200, default="Customers")
+
+    def __str__(self):
+        return "Customers Content"
+
+
 class Client(models.Model):
+    INTERNATIONAL = 'international'
+    LOCAL = 'local'
+    COMPANY_TYPE_CHOICES = [
+        (INTERNATIONAL, 'International Company'),
+        (LOCAL, 'Local Company'),
+    ]
+
     name = models.CharField(max_length=100)
     logo = models.ImageField(upload_to='clients/logos/')
     link = models.URLField(blank=True, null=True)
     is_active = models.BooleanField(default=True)
+    company_type = models.CharField(max_length=20, choices=COMPANY_TYPE_CHOICES, default=LOCAL)
+    order = models.PositiveIntegerField(default=0, blank=False, null=False)
+
+    class Meta:
+        ordering = ['order']
 
     def __str__(self):
         return self.name

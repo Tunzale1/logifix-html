@@ -21,6 +21,8 @@ def home(request):
 def about_page(request):
     return render(request, "page-about.html", {})
 
+def customers_page(request):
+    return render(request, "customers.html")
 
 def contact_page(request):
     if request.method == 'POST':

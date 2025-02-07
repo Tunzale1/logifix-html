@@ -1,0 +1,130 @@
+<!-- page-services.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<title> {{ site_settings.title }} | {{ header_top_info.customers_page }}</title>
+<meta name="keywords" content="{{ site_settings.meta_keywords }}">
+<meta name="description" content="{{ site_settings.description }}">
+
+<!-- Stylesheets -->
+{% load static %}
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+<link rel="shortcut icon" href="{{ site_settings.favicon.url }}" type="image/x-icon">
+<link rel="icon" href="{{ site_settings.favicon.url }}" type="image/x-icon">
+<!-- Responsive -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<!--[if lt IE 9]><script src="js/html5shiv.js"></script><![endif]-->
+<!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+</head>
+
+<body>
+<div class="page-wrapper">
+    <!-- Preloader -->
+    <div class="preloader"><span class="loader"></span></div>
+    
+    {% include 'includes/header.html' %}
+
+	<!-- Start main-content -->
+	<section class="page-title" style="background-image: url({{ client.background_image.url }});">
+		<div class="auto-container">
+			<div class="title-outer text-center">
+				<h1 class="title">{{ client.page_title }}</h1>
+				<ul class="page-breadcrumb">
+					<li><a href="{% url 'home' %}">{{ header_top_info.home_page }}</a></li>
+					<li>{{ header_top_info.customers_page }}</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+	<!-- end main-content -->
+
+
+    <!-- filter section -->
+    <section class="filter-section">
+        <div class="auto-container">
+            <div class="filter-options" style="margin-top: 24px;">
+                <button style="padding:10px" class="filter-btn active" data-filter="all">All</button>
+                <button style="padding:10px" class="filter-btn" data-filter="local">Local Companies</button>
+                <button style="padding:10px" class="filter-btn" data-filter="international">International Companies</button>
+            </div>
+        </div>
+    </section>
+    <!-- end filter ssection -->
+
+    <!-- Customers Section -->
+	<section class="services-section pb-90">
+		<div class="auto-container">
+			<div class="row">
+				{% for client in clients %}
+				<div class="service-block-two col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="{{ forloop.counter|add:"0" }}00ms" data-company-type="{{ client.company_type }}">
+					<div class="inner-box">
+						<li class="client-block">
+                            <a href="{% if client.link %}{{ client.link }}{% else %}#{% endif %}" class="image">
+                                <img src="{{ client.logo.url }}" alt="{{ client.name }}">
+                                <img src="{{ client.logo.url }}" alt="{{ client.name }}">
+                            </a>
+                        </li>
+						
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+    <!-- End Customers-section -->
+
+    {% include 'includes/footer.html' %}
+
+</div>
+<!-- End Page Wrapper -->
+
+<!-- Scroll To Top -->
+<div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-angle-up"></span></div>
+
+<script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.fancybox.js' %}"></script>
+<script src="{% static 'js/jquery-ui.js' %}"></script>
+<script src="{% static 'js/wow.js' %}"></script>
+<script src="{% static 'js/appear.js' %}"></script>
+<script src="{% static 'js/select2.min.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const clientBlocks = document.querySelectorAll('.service-block-two');
+    
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const filterValue = this.getAttribute('data-filter');
+    
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to the clicked button
+                this.classList.add('active');
+    
+                // Filter the client blocks
+                clientBlocks.forEach(block => {
+                    const companyType = block.getAttribute('data-company-type');
+                    if (filterValue === 'all' || companyType === filterValue) {
+                        block.style.display = 'block';
+                    } else {
+                        block.style.display = 'none';
+                    }
+                });
+            });
+        });
+    });
+    </script>
+
+</body>
+
+</html>
