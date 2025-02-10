@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls.i18n import i18n_patterns
 from admin_panel.views import home, services_page, about_page, contact_page, service_detail, customers_page
 
 
@@ -28,6 +29,7 @@ urlpatterns = [
     path("contact/", contact_page, name="contact_page"), # This serves your main page
     path("services/", services_page, name="services_page"),
     path("customers/", customers_page, name="customers_page"),
+    path('i18n/', include('django.conf.urls.i18n')),
     path("<slug:service_slug>/", service_detail, name='service_detail'),  
 ]
 

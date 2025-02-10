@@ -78,3 +78,4 @@ def home_page_data(request):
 def site_settings(request):
     site_settings = SiteSettings.objects.first()  # Get the first settings entry
     return {'site_settings': site_settings}
+

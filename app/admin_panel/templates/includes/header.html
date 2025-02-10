@@ -62,9 +62,30 @@
                 <span class="divider"></span>
                 
                 <!-- Header Search -->
-                <button class="ui-btn mx-0 search-btn">
-                    <i class="icon lnr lnr-icon-search"></i>
-                </button>
+                {% load i18n %}
+
+<!-- Language Switcher Form -->
+<form id="language-form" action="{% url 'set_language' %}" method="post">
+    {% csrf_token %}
+    <input name="next" type="hidden" value="{{ request.path }}">
+    <select name="language" id="language-select">
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as languages %}
+        {% for language in languages %}
+            <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %} selected {% endif %}>
+                 {{ language.code }}
+            </option>
+        {% endfor %}
+    </select>
+</form>
+
+<!-- JavaScript to Auto-Submit the Form -->
+<script>
+    document.getElementById('language-select').addEventListener('change', function() {
+        document.getElementById('language-form').submit();
+    });
+</script>
                 
                 <!-- Mobile Nav toggler -->
                 <div class="mobile-nav-toggler"><span class="icon lnr-icon-bars"></span></div>

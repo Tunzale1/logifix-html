@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 from adminsortable2.admin import SortableAdminMixin
+from django.utils.translation import gettext_lazy as _
 
 # service-details
 class Service(models.Model):
@@ -247,7 +248,7 @@ class FAQPage(models.Model):
     description = models.TextField(default="Lorem ipsum is simply free text used by copytyping refreshing.")
 
     def __str__(self):
-        return "FAQ Page Content"
+        return self.title
     
 #slider-section
 from django.db import models
