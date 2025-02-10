@@ -35,7 +35,7 @@ class FooterCopyrightTranslationOptions(TranslationOptions):
 
 # Header Models Translation
 class HeaderTopInfoTranslationOptions(TranslationOptions):
-    fields = ('address', 'working_hours', 'home_page', 'about_page', 'services_page', 'contact_page', 'customers_page')
+    fields = ('address', 'home_page', 'about_page', 'services_page', 'contact_page', 'customers_page')
 
 class HeaderLogoTranslationOptions(TranslationOptions):
     fields = ('logo_alt_text',)

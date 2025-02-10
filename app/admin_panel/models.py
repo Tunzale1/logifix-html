@@ -6,21 +6,21 @@ from django.utils.translation import gettext_lazy as _
 # service-details
 class Service(models.Model):
     services_page_title =  models.CharField(max_length=200, default="Services")  
-    services_background_image =  models.ImageField(upload_to='services/', default='images/background/page-title.jpg')
+    services_background_image =  models.ImageField(upload_to='services/', default='images/background/page-title.jpg' , help_text="1600 x 364 px")
     slug = models.SlugField(unique=True, blank=True)
     icon_class = models.CharField(max_length=50, default="flaticon-team")
     title = models.CharField(max_length=200, default="Safety and Reliability")
     text_1 = models.CharField(max_length=200, default="Worldwide service")
     text_2 = models.CharField(max_length=200, default="24/7 Support")
-    image = models.ImageField(upload_to='services/')
+    image = models.ImageField(upload_to='services/' , help_text="370 × 492 px")
     
-    service_details_background_image = models.ImageField(upload_to='services/details', default='images/background/page-title.jpg')
+    service_details_background_image = models.ImageField(upload_to='services/details', default='images/background/page-title.jpg', help_text="1600 x 364 px")
     overview_title = models.CharField(max_length=200, default="Service Overview")
     overview = models.TextField(default="Lorem ipsum is simply free text used by copytyping refreshing...")
     center_title = models.CharField(max_length=200, default="Service Center")
     service_center_text = models.TextField(default="Lorem ipsum is simply free text used by copytyping refreshing...")
-    service_image_1 = models.ImageField(upload_to='services/details/', blank=True, null=True)
-    service_image_2 = models.ImageField(upload_to='services/details/', blank=True, null=True)
+    service_image_1 = models.ImageField(upload_to='services/details/', blank=True, null=True, help_text="376 × 209 px")
+    service_image_2 = models.ImageField(upload_to='services/details/', blank=True, null=True, help_text="376 × 209 px")
     contact_title = models.CharField(max_length=200, default="Contact with us for any advice")
     contact_phone = models.CharField(max_length=20, default="+892 ( 123 ) 112 - 9999")
     contact_text = models.CharField(max_length=200, default="Need help? Talk to an expert")
@@ -35,14 +35,14 @@ class Service(models.Model):
 
 # footer-section
 class FooterLogo(models.Model):
-    logo = models.ImageField(upload_to='footer/logo/')
+    logo = models.ImageField(upload_to='footer/logo/', help_text="193 × 47 px")
 
     def __str__(self):
         return "Footer Logo"
 
 
 class FooterContactInfo(models.Model):
-    background_image = models.ImageField(upload_to='footer/logo/', default='images/icons/footer-bg.png')
+    background_image = models.ImageField(upload_to='footer/logo/', default='images/icons/footer-bg.png', help_text="1600 x 688 px")
     phone_title = models.CharField(max_length=100, default="Call Us On")
     phone_number = models.CharField(max_length=20)
 
@@ -112,7 +112,7 @@ class HeaderTopInfo(models.Model):
         return "Header Top Info"
 
 class HeaderLogo(models.Model):
-    logo = models.ImageField(upload_to='header/logo/')
+    logo = models.ImageField(upload_to='header/logo/', help_text="193 x 47 px")
     logo_alt_text = models.CharField(max_length=100, default="Logifix")
 
     def __str__(self):
@@ -149,7 +149,7 @@ from django.db import models
 
 class AboutPageHero(models.Model):
     title = models.CharField(max_length=200, default="About Us")
-    background_image = models.ImageField(upload_to='about/hero/')
+    background_image = models.ImageField(upload_to='about/hero/', help_text="1600 x 364 px")
 
     def __str__(self):
         return "About Page Hero Section"
@@ -161,9 +161,9 @@ class AboutSection(models.Model):
     years_experience = models.IntegerField(default=25)
     button_text = models.CharField(max_length=200, default="Explore more")
     
-    image_1 = models.ImageField(upload_to='about/')
-    image_2 = models.ImageField(upload_to='about/')
-    logo_image = models.ImageField(upload_to='about/')
+    image_1 = models.ImageField(upload_to='about/', help_text="515 x 589 px")
+    image_2 = models.ImageField(upload_to='about/', help_text="320 x 273 px")
+    logo_image = models.ImageField(upload_to='about/', help_text="72 x 64 px")
 
     def __str__(self):
         return "About Main Section"
@@ -181,7 +181,7 @@ class AboutCounter(models.Model):
         return "About Counter Section"
 
 class WhyChooseUs(models.Model):
-    subtitle = models.CharField(max_length=100, default="Why select us")
+    subtitle = models.CharField(max_length=100, default="bura ile bagli olan her bir seyi bos buraxin zehmet olmasa (bu section sehifede yoxdur)")
     title = models.CharField(max_length=200)
     background_image = models.ImageField(upload_to='about/background/')
     promo_image = models.ImageField(upload_to='about/promo/')
@@ -195,7 +195,7 @@ class WhyChooseUs(models.Model):
 
 class Feature(models.Model):
     icon_class = models.CharField(max_length=50)
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=200, default="bura ile bagli olan her bir seyi bos buraxin zehmet olmasa (bu section sehifede yoxdur)")
     link = models.URLField()
 
     def __str__(self):
@@ -207,7 +207,7 @@ class Feature(models.Model):
 class ContactPage(models.Model):
     # Hero Section
     hero_title = models.CharField(max_length=200, default="Contact Us")
-    hero_background_image = models.ImageField(upload_to='contact/hero/')
+    hero_background_image = models.ImageField(upload_to='contact/hero/', help_text="1600 x 364 px")
 
     # Contact Form Section
     form_title = models.CharField(max_length=200, default="Feel free to write")
@@ -255,7 +255,7 @@ from django.db import models
 
 
 class CustomersPageSettings(models.Model):
-    background_image = models.ImageField(upload_to='clients/', default='images/background/page-title.jpg')
+    background_image = models.ImageField(upload_to='clients/', default='images/background/page-title.jpg', help_text="1600 x 364 px")
     page_title = models.CharField(max_length=200, default="Customers")
 
     def __str__(self):
@@ -271,7 +271,7 @@ class Client(models.Model):
     ]
 
     name = models.CharField(max_length=100)
-    logo = models.ImageField(upload_to='clients/logos/')
+    logo = models.ImageField(upload_to='clients/logos/', help_text="95 x 125 px")
     link = models.URLField(blank=True, null=True)
     is_active = models.BooleanField(default=True)
     company_type = models.CharField(max_length=20, choices=COMPANY_TYPE_CHOICES, default=LOCAL)
@@ -292,7 +292,7 @@ class HomePageContent(models.Model):
     banner_badge_text = models.CharField(max_length=100, default='Fast and Reliable Shipping')
     banner_main_title = models.CharField(max_length=200, default='Transport Solution 24/7')
     banner_subtitle = models.TextField(default='We strongly support best practice sharing across our operations around the world and across various')
-    banner_background_image = models.ImageField(upload_to='homepage/banner/')
+    banner_background_image = models.ImageField(upload_to='homepage/banner/', help_text="1600 x 960 px")
     banner_button_text = models.CharField(max_length=100, default='Request A Quote')
 
     # About Section
@@ -306,18 +306,18 @@ class HomePageContent(models.Model):
     about_checkmark_2 = models.CharField(max_length=200, default='Every pleasure is to be welcomed and every pain')
     about_checkmark_3 = models.CharField(max_length=200, default='Velit esse cillum dolore eu fugiat nulla pariatur')
     
-    about_image_1 = models.ImageField(upload_to='homepage/about/')
-    about_image_2 = models.ImageField(upload_to='homepage/about/')
+    about_image_1 = models.ImageField(upload_to='homepage/about/', help_text="432 x 605 px")
+    about_image_2 = models.ImageField(upload_to='homepage/about/', help_text="410 x 260 px")
 
 
      # Call to Action Section
     cta_title = models.CharField(max_length=200, default='Logistics & Cargo For Business')
-    cta_background_image = models.ImageField(upload_to='homepage/cta/')
+    cta_background_image = models.ImageField(upload_to='homepage/cta/', help_text="1170 x 332 px")
     cta_video_url = models.URLField(blank=True, null=True)
-    cta_image_man = models.ImageField(upload_to='homepage/cta/', default='images/resource/why-choose3-1.png')
+    cta_image_man = models.ImageField(upload_to='homepage/cta/', default='images/resource/why-choose3-1.png', help_text="265 x 296 px")
 
     # Why Choose Us Section
-    shape_image = models.ImageField(upload_to='images/icons/', default='images/icons/shape-1.png')
+    shape_image = models.ImageField(upload_to='images/icons/', default='images/icons/shape-1.png', help_text="615 x 512 px")
     why_choose_subtitle = models.CharField(max_length=100, default='WHY CHOOSE US')
     why_choose_title = models.CharField(max_length=200, default='We create opportunity to reach potential')
     why_choose_description = models.TextField(default='There are many variations of passages of available but majority have suffered alteration in some form.')
@@ -329,8 +329,8 @@ class HomePageContent(models.Model):
     feature_block_two_title = models.CharField(max_length=100, default='Shipping Worldwide')
     feature_block_two_text = models.TextField(default='Aenean placerat ut lacus nec pulvinar. Donce eu leo ante at commodo diam dolor sit amet')
 
-    why_choose_image = models.ImageField(upload_to='images/resource/', default='images/resource/why-choose3-1.png')
-    badge_image = models.ImageField(upload_to='images/icons/', default='images/icons/badge.png')
+    why_choose_image = models.ImageField(upload_to='images/resource/', default='images/resource/why-choose3-1.png', help_text="738 x 653 px")
+    badge_image = models.ImageField(upload_to='images/icons/', default='images/icons/badge.png', help_text="249 x 175 px")
 
     #Offer section
     offer_subtitle = models.CharField(max_length=100, default='SPECIAL LOGISTICS')
@@ -343,7 +343,7 @@ class HomePageContent(models.Model):
 
     button_text = models.CharField(max_length=50, default='Explore More')
 
-    offer_image = models.ImageField(upload_to='images/resource/', default='images/resource/offer-img-1.jpg')
+    offer_image = models.ImageField(upload_to='images/resource/', default='images/resource/offer-img-1.jpg', help_text="1000 x 654 px")
 
     counter_title = models.CharField(max_length=100, default='Trusted by')
     counter_value = models.IntegerField(default=4890)
@@ -358,7 +358,7 @@ class HomePageContent(models.Model):
 #site-settings
 class SiteSettings(models.Model):
     title = models.CharField(max_length=150, help_text="Website title")
-    favicon = models.ImageField(upload_to='favicons/', help_text="Upload favicon image", default='images/favicon.png')
+    favicon = models.ImageField(upload_to='favicons/', help_text="Upload favicon image - 32 x 32 px", default='images/favicon.png')
     description = models.CharField(max_length=200, help_text="Add your site description here (150-160 characters optimal)", blank=True, null=True)
     meta_keywords = models.CharField(max_length=255, help_text="Comma-separated keywords for SEO", blank=True, null=True)
 
